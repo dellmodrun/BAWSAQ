@@ -262,3 +262,5 @@ body:has(.coin-register) .mint-strip-wrap{display:none}
 .printer-app .docs-hub .dh-article .doc-section p{color:#e3c3d4}
 .printer-app .docs-hub .dh-outline a,.printer-app .docs-hub .dh-breadcrumb,.printer-app .docs-hub .dh-article-meta{color:#d6abc1}
 
+.cm-art .cm-art-source{inset:10%;width:80%;height:80%}
+

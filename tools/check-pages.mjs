@@ -59,6 +59,8 @@ for (const name of ['Qwence','Misstral']) {
 }
 if (bundle.includes('name:"Maze Bank"') || bundle.includes('name:"Fleeca Bank"')) throw new Error('Old company roster remains');
 if (!bundle.includes('/assets/stocks/gta-six/chatgta.png') || !bundle.includes('/assets/stocks/gta-six/la-llama.png')) throw new Error('New AI stock logo references missing');
+if (!bundle.includes('https://x.com/bawsaqaiindex') || bundle.includes('https://x.com/bawsaqfund')) throw new Error('BAWSAQ X account is outdated');
+if (!bundle.includes('children:"$"+A.symbol')) throw new Error('Stock ticker prefix is missing');
 const market=fs.readFileSync(path.join(site,'assets/Coins-CA1CFPin.js'),'utf8');
 if (!market.includes('OFFICIAL / PINNED') || !market.includes('Six AI stocks. One city.')) throw new Error('Market preview is missing');
 const directory=fs.readFileSync(path.join(site,'assets/Commodities-BqprS4wm.js'),'utf8');
