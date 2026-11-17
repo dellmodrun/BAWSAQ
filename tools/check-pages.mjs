@@ -25,6 +25,8 @@ if (!bundle.includes('R.jsx(gA,{basename:"/BAWSAQ",children:R.jsx(QO,{})})')) th
 if (bundle.includes('YO=Fk(P_,{basename:')) throw new Error('Basename was applied to the route matcher instead of BrowserRouter');
 if (!bundle.includes('window.setTimeout(c,550)')) throw new Error('Splash cleanup timeout is missing');
 if (bundle.includes('f.finished.then(c,c)')) throw new Error('Splash still waits for an infinite logo animation');
+if (!bundle.includes('M8=function(r){return"/BAWSAQ/"+r}')) throw new Error('Dynamic module preload base is missing');
+if (bundle.includes('M8=function(r){return"/"+r}')) throw new Error('Dynamic modules still preload from the domain root');
 if (bundle.includes('src:"/assets/')) throw new Error('Root-relative bundle assets remain');
 if (bundle.includes(', /assets/')) throw new Error('Root-relative responsive image candidates remain');
 const css = fs.readFileSync(path.join(site, 'assets/index-BXcgnZ7x.css'), 'utf8');

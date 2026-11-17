@@ -18,6 +18,7 @@ fs.cpSync(source, output, { recursive: true });
 const textExtensions = new Set(['.html', '.css', '.js', '.json', '.svg']);
 let routerPatched = false;
 let splashPatched = false;
+let dynamicPreloadPatched = false;
 
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -54,6 +55,14 @@ function walk(directory) {
         );
         splashPatched = true;
       }
+      const dynamicPreloadBase = 'M8=function(r){return"/"+r}';
+      if (entry.name === 'index-Y7lMokl3.js' && contents.includes(dynamicPreloadBase)) {
+        contents = contents.replace(
+          dynamicPreloadBase,
+          `M8=function(r){return"${base}/"+r}`
+        );
+        dynamicPreloadPatched = true;
+      }
       if (contents !== before) fs.writeFileSync(target, contents);
     }
   }
@@ -62,6 +71,7 @@ function walk(directory) {
 walk(output);
 if (!routerPatched) throw new Error('Unable to configure the BAWSAQ router basename');
 if (!splashPatched) throw new Error('Unable to configure the BAWSAQ splash cleanup');
+if (!dynamicPreloadPatched) throw new Error('Unable to configure the BAWSAQ dynamic preload base');
 
 fs.copyFileSync(path.join(output, 'index.html'), path.join(output, '404.html'));
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
