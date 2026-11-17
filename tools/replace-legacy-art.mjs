@@ -2,12 +2,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const replacements = new Map([
-  ['exchange-poster-portrait-640.webp','hero-poster-mobile.webp'],
-  ['exchange-poster-portrait.webp','hero-poster-mobile.webp'],
-  ['exchange-poster-wide-960.webp','hero-poster-wide.webp'],
-  ['exchange-poster-wide.webp','hero-poster-wide.webp'],
-  ['exchange-poster-960.webp','hero-poster-wide.webp'],
-  ['exchange-poster.webp','hero-poster-wide.webp'],
+  ['exchange-poster-portrait-640.webp','hero-lucia-jason-mobile.webp'],
+  ['exchange-poster-portrait.webp','hero-lucia-jason-mobile.webp'],
+  ['exchange-poster-wide-960.webp','hero-lucia-jason-wide.webp'],
+  ['exchange-poster-wide.webp','hero-lucia-jason-wide.webp'],
+  ['exchange-poster-960.webp','hero-lucia-jason-wide.webp'],
+  ['exchange-poster.webp','hero-lucia-jason-wide.webp'],
   ['exchange-sunset-800.webp','hero-wide.webp'],
   ['exchange-sunset.webp','hero-wide.webp'],
   ['financial-district-800.webp','district.webp'],
@@ -53,8 +53,8 @@ export function replaceLegacyArt(site) {
       let next = source;
       for (const [oldName,newName] of replacements) next = next.replaceAll(`leonida/${oldName}`,`ai-city/${newName}`);
       next = next.replaceAll('leonida/apple-touch-icon.png','platform/bawsaq-logo-transparent-clean.png')
-        .replaceAll('platform/bawsaq-brand-art.png','ai-city/share-poster.jpg')
-        .replaceAll('leonida/exchange-share.jpg','ai-city/share-poster.jpg');
+        .replaceAll('platform/bawsaq-brand-art.png','ai-city/share-lucia-jason.jpg')
+        .replaceAll('leonida/exchange-share.jpg','ai-city/share-lucia-jason.jpg');
       if (next !== source) fs.writeFileSync(file,next);
     }
   };

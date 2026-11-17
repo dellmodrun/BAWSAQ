@@ -11,8 +11,8 @@ for (const file of [
   'assets/bawsaq-brand.css',
   'assets/platform/bawsaq-logo-transparent-clean.png',
   'assets/ai-city/hero-wide.webp',
-  'assets/ai-city/hero-poster-wide.webp', 'assets/ai-city/hero-poster-mobile.webp',
-  'assets/ai-city/share-poster.jpg',
+  'assets/ai-city/hero-lucia-jason-wide.webp', 'assets/ai-city/hero-lucia-jason-mobile.webp',
+  'assets/ai-city/share-lucia-jason.jpg',
   'assets/ai-city/chatgta-studio.webp', 'assets/ai-city/la-llama-garage.webp',
   'assets/platform/bawsaq-boot-scene.webp',
   'assets/CommodityDetail-B_zrO4xK.js',
@@ -49,9 +49,9 @@ if(fs.existsSync(path.join(site,'assets/leonida'))) throw new Error('Legacy scen
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
 if (!bundle.includes('className:"ai-city-wordmark"')) throw new Error('Homepage project-name wordmark is missing');
-if (!bundle.includes('hero-poster-wide.webp') || !bundle.includes('hero-poster-mobile.webp')) throw new Error('Irregular AI poster is missing');
+if (!bundle.includes('hero-lucia-jason-wide.webp') || !bundle.includes('hero-lucia-jason-mobile.webp')) throw new Error('Lucia and Jason AI poster is missing');
 if (bundle.includes('hero-nine-wide.webp') || bundle.includes('hero-nine-mobile.webp')) throw new Error('Regular grid poster remains');
-if (!html.includes('/assets/ai-city/share-poster.jpg')) throw new Error('AI poster share preview is missing');
+if (!html.includes('/assets/ai-city/share-lucia-jason.jpg')) throw new Error('AI poster share preview is missing');
 if (!bundle.includes('Six AI stocks. One Vice City market.')) throw new Error('Project introduction is missing');
 if (!bundle.includes('BAWSAQ live price chart')) throw new Error('Future live chart block is missing');
 if (!html.includes('class="ai8-sidebar"') || !html.includes('/BAWSAQ/assets/ai8-sidebar.css')) throw new Error('Left navigation is missing');
