@@ -34,7 +34,7 @@ function SixMarketPreview({platformMint}){
   const official=sixPublishedMint(platformMint);
   const stocks=${JSON.stringify(stocks)};
   return e.jsxs("section",{className:"six-market", "aria-labelledby":"six-market-title",children:[
-    e.jsxs("div",{className:"six-market-heading",children:[e.jsxs("div",{children:[e.jsx("span",{className:"six-market-kicker",children:"THE OFFICIAL LINEUP"}),e.jsx("h2",{id:"six-market-title",children:"Six stocks. One city."})]}),e.jsx("p",{children:"Explore the official $BAWSAQ token and six fictional AI stocks before trading opens."})]}),
+    e.jsxs("div",{className:"six-market-heading",children:[e.jsxs("div",{children:[e.jsx("span",{className:"six-market-kicker",children:"THE OFFICIAL LINEUP"}),e.jsx("h2",{id:"six-market-title",children:"Six AI stocks. One city."})]}),e.jsx("p",{children:"Explore the official $BAWSAQ token and six fictional AI stocks before trading opens."})]}),
     e.jsxs("article",{className:"six-market-official",children:[
       e.jsx("img",{src:"${base}/assets/platform/bawsaq-logo-transparent-clean.png",alt:"",width:72,height:72}),
       e.jsxs("div",{className:"six-market-official-name",children:[e.jsx("span",{className:"six-market-badge",children:"OFFICIAL / PINNED"}),e.jsx("h3",{children:"$BAWSAQ"}),e.jsx("p",{children:"BAWSAQ platform token"})]}),
@@ -63,5 +63,6 @@ function SixMarketPreview({platformMint}){
     'title:"Coin directory",description:"Explore coins launched on the exchange, their markets and their holder rewards."',
     'title:"BAWSAQ market",description:"One official token, six fictional AI stocks and a community coin register."');
   source = replaceExact(source, 'children:["Launched on ",h]', 'children:"Community coin register"');
+  source = replaceExact(source, '["stock","Stock pairs"],["legacy","Legacy markets"]', '["stock","Six-stock pairs"]');
   fs.writeFileSync(file, source);
 }

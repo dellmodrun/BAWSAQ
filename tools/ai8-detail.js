@@ -19,7 +19,7 @@ function Page(){
   const [reference,field,story]=references[slug];
   document.title=`${item.name} · BAWSAQ`;
   return React.jsxs('main',{className:'ai8-detail',children:[
-    React.jsx(Link,{className:'ai8-detail-back',to:'/goods',children:'← THE SIX STOCKS'}),
+    React.jsx(Link,{className:'ai8-detail-back',to:'/goods',children:'← THE SIX AI STOCKS'}),
     React.jsxs('section',{className:'ai8-detail-hero',children:[
       React.jsxs('div',{children:[React.jsx('p',{className:'ai8-eyebrow',children:'BAWSAQ / FICTIONAL AI STOCK'}),React.jsx('h1',{children:item.name}),React.jsx('p',{className:'ai8-detail-lead',children:item.description}),React.jsxs('p',{className:'ai8-detail-tag',children:['$'+item.symbol,' · ',field,' · PRELAUNCH']})]}),
       React.jsx('img',{src:item.image_source_url,alt:`${item.name} temporary catalog emblem`,width:230,height:230})

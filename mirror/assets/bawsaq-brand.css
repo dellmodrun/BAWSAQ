@@ -256,3 +256,9 @@ body:has(.coin-register) .mint-strip-wrap{display:none}
 @media(max-width:900px){.six-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.six-market-heading{display:block}.six-market-heading p{margin-top:8px}.six-market-official{grid-template-columns:52px 1fr;gap:12px;padding:18px}.six-market-official>img{width:52px;height:52px}.six-market-address{grid-column:1/-1;justify-self:start;text-align:left}.six-market-grid{grid-template-columns:1fr}.six-market-card{min-height:170px}}
 
+.printer-app .docs-hub .dh-body{--canvas:#23101f;--surface:#35182d;--surface-2:#402038;--surface-3:#4d2741;--text:#fff3f9;--text-secondary:#f2d6e5;--muted:#dbb7ca;--faint:#bd8fa9;--border:#71405d;--accent-ink:#ff88bb;--lime:#ff75b0;color:var(--text);background:var(--canvas);border:1px solid #ff8ac044}
+.printer-app .docs-hub .dh-start-cards a,.printer-app .docs-hub .dh-pagination a,.printer-app .docs-hub .dh-result-list>a{background:#35182d;border:1px solid #ff8ac02e}
+.printer-app .docs-hub .dh-start-cards a:hover,.printer-app .docs-hub .dh-pagination a:hover,.printer-app .docs-hub .dh-result-list>a:hover{background:#47213b;border-color:#ff8ac080}
+.printer-app .docs-hub .dh-article .doc-section p{color:#e3c3d4}
+.printer-app .docs-hub .dh-outline a,.printer-app .docs-hub .dh-breadcrumb,.printer-app .docs-hub .dh-article-meta{color:#d6abc1}
+
