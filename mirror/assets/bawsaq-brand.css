@@ -81,7 +81,49 @@ body::before {
 }
 
 #goods-boot {
-  background: radial-gradient(circle at 50% 40%, #5e1840 0, #26091c 42%, #12040d 100%) !important;
+  isolation: isolate;
+  overflow: hidden;
+  background: #12040d !important;
+}
+
+#goods-boot::before {
+  content: "";
+  position: absolute;
+  inset: -3%;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, #15040d2e 0%, #14040d14 42%, #10030bbf 100%),
+    url(/assets/platform/bawsaq-boot-scene.webp) center / cover no-repeat;
+  transform: scale(1.035);
+  animation: bawsaq-boot-scene 7s cubic-bezier(.2,.75,.2,1) both;
+}
+
+#goods-boot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 46%, transparent 0 16%, #16040e3d 45%, #0b0208c9 100%),
+    linear-gradient(90deg, #13030dad 0, transparent 28% 72%, #13030da8 100%);
+}
+
+@keyframes bawsaq-boot-scene {
+  from { transform: scale(1.075) translate3d(0, 1.2%, 0); }
+  to { transform: scale(1.025) translate3d(0, 0, 0); }
+}
+
+.boot-lockup {
+  position: relative;
+  z-index: 2;
+  padding: 28px 34px 24px;
+  border: 1px solid #ff89bb30;
+  border-radius: 22px;
+  background: #16050e42;
+  box-shadow: 0 24px 80px #0902078c;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .boot-horizon img {
@@ -108,7 +150,7 @@ body::before {
 }
 
 .printer-app .exchange-hero h1 {
-  width: min(25%, 260px);
+  width: min(34%, 420px);
 }
 
 .exchange-hero h1 img {
@@ -141,5 +183,9 @@ body::before {
 ::selection {
   color: #18050f;
   background: #ff70ae;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #goods-boot::before { animation: none; }
 }
 

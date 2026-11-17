@@ -11,6 +11,7 @@ for (const file of [
   'assets/bawsaq-brand.css',
   'assets/platform/bawsaq-logo-transparent-clean.png',
   'assets/platform/bawsaq-brand-art.png',
+  'assets/platform/bawsaq-boot-scene.webp',
   'explore/index.html', 'goods/index.html', 'launch/index.html',
   'ledger/index.html', 'earnings/index.html', 'docs/index.html'
 ]) {
@@ -37,8 +38,10 @@ if (css.includes('url(/assets/')) throw new Error('Root-relative CSS assets rema
 if (css.includes('url(/fonts/')) throw new Error('Root-relative CSS fonts remain');
 if (!html.includes('/BAWSAQ/assets/bawsaq-brand.css')) throw new Error('BAWSAQ brand stylesheet is missing');
 if (!html.includes('/BAWSAQ/assets/platform/bawsaq-logo-transparent-clean.png')) throw new Error('Transparent BAWSAQ boot logo is missing');
-if (bundle.includes('leonida/exchange-mark.svg') || bundle.includes('leonida/exchange-poster-title.svg')) throw new Error('Legacy BAWSAQ logo references remain');
+if (!html.includes('/BAWSAQ/assets/platform/bawsaq-boot-scene.webp')) throw new Error('BAWSAQ boot scene preload is missing');
+if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
+if (!bundle.includes('leonida/exchange-poster-title.svg')) throw new Error('Homepage project-name wordmark is missing');
 
 console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
 
