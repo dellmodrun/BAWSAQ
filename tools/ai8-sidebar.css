@@ -1,4 +1,7 @@
 .ai8-sidebar{display:none}
+.exchange-hero .exchange-hero-stage{grid-template-columns:minmax(0,1fr);grid-template-areas:"poster" "contract";row-gap:18px}
+.exchange-hero .exchange-hero-action,.exchange-hero .exchange-hero-routes{display:none}
+.exchange-hero .hero-contract{justify-self:start;padding-inline-start:var(--poster-mat);text-align:left}
 @media(min-width:1100px){
   body{padding-left:252px}
   .lse-masthead{display:none!important}
