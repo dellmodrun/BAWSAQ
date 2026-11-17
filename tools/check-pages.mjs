@@ -42,6 +42,11 @@ if (!html.includes('/BAWSAQ/assets/platform/bawsaq-boot-scene.webp')) throw new 
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
 if (!bundle.includes('leonida/exchange-poster-title.svg')) throw new Error('Homepage project-name wordmark is missing');
+for (const name of ['ChatGTA','Clawde','Geminight','Grockstar','DeepStreet','Qwence','La Llama','Misstral']) {
+  if (!bundle.includes(`"name":${JSON.stringify(name)}`)) throw new Error(`AI 8 company missing: ${name}`);
+}
+if (bundle.includes('name:"Maze Bank"') || bundle.includes('name:"Fleeca Bank"')) throw new Error('Old company roster remains');
+if (!bundle.includes('/assets/stocks/MAZE.png') || !bundle.includes('/assets/stocks/ECOLA.png')) throw new Error('Original company image references changed');
 
 console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
 

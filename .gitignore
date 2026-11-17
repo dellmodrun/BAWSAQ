@@ -9,6 +9,11 @@ _site/
 *.key
 *keypair*.json
 qa-pages.png
+qa-ai8-*.png
+qa-copy.png
+.edge-audit/
+.edge-audit-mobile/
+.qa-browser-ai8copy/
 mirror/assets/platform/bawsaq-logo-transparent.png
 mirror/assets/platform/bawsaq-logo-transparent-v2.png
 

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applyAi8Copy } from './ai8-copy.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const source = path.join(root, 'mirror');
@@ -87,6 +88,7 @@ function walk(directory) {
 }
 
 walk(output);
+applyAi8Copy(output);
 if (!routerPatched) throw new Error('Unable to configure the BAWSAQ router basename');
 if (!splashPatched) throw new Error('Unable to configure the BAWSAQ splash cleanup');
 if (!dynamicPreloadPatched) throw new Error('Unable to configure the BAWSAQ dynamic preload base');
