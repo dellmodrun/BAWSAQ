@@ -1,47 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const site = path.join(root, '_site');
-
-for (const file of [
-  'index.html', '404.html', '.nojekyll',
-  'assets/index-Y7lMokl3.js', 'assets/index-BXcgnZ7x.css',
-  'assets/bawsaq-brand.css',
-  'assets/platform/bawsaq-logo-transparent-clean.png',
-  'assets/platform/bawsaq-brand-art.png',
-  'assets/platform/bawsaq-boot-scene.webp',
-  'explore/index.html', 'goods/index.html', 'launch/index.html',
-  'ledger/index.html', 'earnings/index.html', 'docs/index.html'
-]) {
+const site = path.join(path.dirname(path.dirname(fileURLToPath(import.meta.url))), '_site');
+for (const file of ['index.html','404.html','assets/ai8.css','assets/ai8.js','assets/bawsaq-logo-transparent-clean.png','assets/bawsaq-boot-scene.webp','goods/index.html','explore/index.html','launch/index.html','ledger/index.html','earnings/index.html','docs/index.html','index-methodology/index.html']) {
   const target = path.join(site, file);
-  if (!fs.existsSync(target) || (file !== '.nojekyll' && fs.statSync(target).size === 0)) {
-    throw new Error(`Missing Pages output: ${file}`);
-  }
+  if (!fs.existsSync(target) || fs.statSync(target).size === 0) throw new Error(`Missing Pages file: ${file}`);
 }
-
 const html = fs.readFileSync(path.join(site, 'index.html'), 'utf8');
-const bundle = fs.readFileSync(path.join(site, 'assets/index-Y7lMokl3.js'), 'utf8');
-if (!html.includes('/BAWSAQ/assets/index-Y7lMokl3.js')) throw new Error('Homepage asset base was not rewritten');
-if (!html.includes('/BAWSAQ/fonts/')) throw new Error('Homepage font base was not rewritten');
-if (!bundle.includes('R.jsx(gA,{basename:"/BAWSAQ",children:R.jsx(QO,{})})')) throw new Error('BrowserRouter basename is missing');
-if (bundle.includes('YO=Fk(P_,{basename:')) throw new Error('Basename was applied to the route matcher instead of BrowserRouter');
-if (!bundle.includes('window.setTimeout(c,550)')) throw new Error('Splash cleanup timeout is missing');
-if (bundle.includes('f.finished.then(c,c)')) throw new Error('Splash still waits for an infinite logo animation');
-if (!bundle.includes('M8=function(r){return"/BAWSAQ/"+r}')) throw new Error('Dynamic module preload base is missing');
-if (bundle.includes('M8=function(r){return"/"+r}')) throw new Error('Dynamic modules still preload from the domain root');
-if (bundle.includes('src:"/assets/')) throw new Error('Root-relative bundle assets remain');
-if (bundle.includes(', /assets/')) throw new Error('Root-relative responsive image candidates remain');
-const css = fs.readFileSync(path.join(site, 'assets/index-BXcgnZ7x.css'), 'utf8');
-if (css.includes('url(/assets/')) throw new Error('Root-relative CSS assets remain');
-if (css.includes('url(/fonts/')) throw new Error('Root-relative CSS fonts remain');
-if (!html.includes('/BAWSAQ/assets/bawsaq-brand.css')) throw new Error('BAWSAQ brand stylesheet is missing');
-if (!html.includes('/BAWSAQ/assets/platform/bawsaq-logo-transparent-clean.png')) throw new Error('Transparent BAWSAQ boot logo is missing');
-if (!html.includes('/BAWSAQ/assets/platform/bawsaq-boot-scene.webp')) throw new Error('BAWSAQ boot scene preload is missing');
-if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
-if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
-if (!bundle.includes('leonida/exchange-poster-title.svg')) throw new Error('Homepage project-name wordmark is missing');
-
-console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
-
+const js = fs.readFileSync(path.join(site, 'assets/ai8.js'), 'utf8');
+if (!html.includes('/BAWSAQ/assets/ai8.js') || !html.includes('/BAWSAQ/assets/ai8.css')) throw new Error('Incorrect Pages base');
+if (!js.includes('ChatGTA') || !js.includes('Misstral') || !js.includes('Prelaunch')) throw new Error('AI 8 content is incomplete');
+if (js.includes('$TKNIZD') || js.includes('Maze Bank') || js.includes('12 fictional')) throw new Error('Legacy stock narrative remains');
+console.log('PASS: BAWSAQ AI 8 pages and core assets verified.');
