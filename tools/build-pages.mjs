@@ -5,6 +5,10 @@ import { applyAi8Copy } from './ai8-copy.mjs';
 import { applySixMarketPreview } from './six-market-preview.mjs';
 import { replaceLegacyArt } from './replace-legacy-art.mjs';
 import { applyLiveCa } from './live-ca.mjs';
+import { applyWalletConnect } from './wallet-connect.mjs';
+import { applyPublicSlugs, slugPairs } from './public-slugs.mjs';
+import { applySitePolish } from './site-polish.mjs';
+import { versionAssets } from './version-assets.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const source = path.join(root, 'mirror');
@@ -18,6 +22,7 @@ if (!fs.existsSync(path.join(source, 'index.html'))) {
 
 fs.rmSync(output, { recursive: true, force: true });
 fs.cpSync(source, output, { recursive: true });
+fs.rmSync(path.join(output, '.query-cache'), { recursive: true, force: true });
 
 const textExtensions = new Set(['.html', '.css', '.js', '.json', '.svg']);
 let routerPatched = false;
@@ -94,19 +99,31 @@ function walk(directory) {
 walk(output);
 applyAi8Copy(output);
 applyLiveCa(output);
+applyWalletConnect(output);
 applySixMarketPreview(output, base);
 replaceLegacyArt(output);
+for (const unused of ['bawsaq-logo-transparent.png','bawsaq-logo-transparent-v2.png']) {
+  fs.rmSync(path.join(output, 'assets', 'platform', unused), { force: true });
+}
 fs.copyFileSync(path.join(root, 'tools', 'ai8-detail.js'), path.join(output, 'assets', 'CommodityDetail-B_zrO4xK.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.js'), path.join(output, 'assets', 'ai8-sidebar.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.css'), path.join(output, 'assets', 'ai8-sidebar.css'));
+applyPublicSlugs(output);
+applySitePolish(output);
 const stockImages=[['CGTA','chatgta'],['CLAW','clawde'],['GEMI','geminight'],['GROK','grockstar'],['DEEP','deepstreet'],['LLMA','la-llama']];
 const previewDirectory=path.join(output,'assets','stocks','previews');
 fs.mkdirSync(previewDirectory,{recursive:true});
 for(const [symbol,name] of stockImages)fs.copyFileSync(path.join(output,'assets','stocks','gta-six',`${name}.png`),path.join(previewDirectory,`${symbol}.png`));
-for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','sprunk']) {
+for (const [, slug] of slugPairs) {
   const destination=path.join(output,'goods',slug);
   fs.mkdirSync(destination,{recursive:true});
   fs.copyFileSync(path.join(output,'index.html'),path.join(destination,'index.html'));
+}
+for (const [oldSlug, slug] of slugPairs) {
+  const destination=path.join(output,'goods',oldSlug);
+  fs.mkdirSync(destination,{recursive:true});
+  fs.writeFileSync(path.join(destination,'index.html'),
+    `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=${base}/goods/${slug}/"><link rel="canonical" href="https://dellmodrun.github.io${base}/goods/${slug}/"><title>BAWSAQ</title>`);
 }
 fs.writeFileSync(path.join(output, 'adminPanel', 'index.html'),
   fs.readFileSync(path.join(root, 'tools', 'admin-status.html'), 'utf8').replaceAll('__BASE__', base));
@@ -116,5 +133,6 @@ if (!dynamicPreloadPatched) throw new Error('Unable to configure the BAWSAQ dyna
 
 fs.copyFileSync(path.join(output, 'index.html'), path.join(output, '404.html'));
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
-console.log(`GitHub Pages bundle created at ${output} with base ${base}/`);
+const assetRevision = versionAssets(output);
+console.log(`GitHub Pages bundle created at ${output} with base ${base}/ and asset revision ${assetRevision}`);
 

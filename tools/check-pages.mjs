@@ -25,19 +25,24 @@ for (const file of [
     throw new Error(`Missing Pages output: ${file}`);
   }
 }
+if (fs.existsSync(path.join(site,'.query-cache'))) throw new Error('Old public query cache is still published');
 
 const html = fs.readFileSync(path.join(site, 'index.html'), 'utf8');
 const bundle = fs.readFileSync(path.join(site, 'assets/index-Y7lMokl3.js'), 'utf8');
 if (!html.includes('/BAWSAQ/assets/index-Y7lMokl3.js')) throw new Error('Homepage asset base was not rewritten');
+if (!/index-Y7lMokl3\.js\?v=[a-f0-9]{12}/.test(html)) throw new Error('Homepage script does not bypass stale Pages caches');
 if (!html.includes('/BAWSAQ/fonts/')) throw new Error('Homepage font base was not rewritten');
 if (!bundle.includes('R.jsx(gA,{basename:"/BAWSAQ",children:R.jsx(QO,{})})')) throw new Error('BrowserRouter basename is missing');
 if (bundle.includes('YO=Fk(P_,{basename:')) throw new Error('Basename was applied to the route matcher instead of BrowserRouter');
 if (!bundle.includes('window.setTimeout(c,550)')) throw new Error('Splash cleanup timeout is missing');
 if (bundle.includes('f.finished.then(c,c)')) throw new Error('Splash still waits for an infinite logo animation');
 if (!bundle.includes('M8=function(r){return"/BAWSAQ/"+r}')) throw new Error('Dynamic module preload base is missing');
-if (!bundle.includes('bawsaq_public_platform_reward_token') || !bundle.includes('bawsaq_public_commodities')) throw new Error('Independent CA views are not connected');
+if (!bundle.includes('bawsaq_public_platform_reward_token') || !bundle.includes('bawsaq_public_commodities_v2')) throw new Error('Independent CA views are not connected');
+if (bundle.includes('e("/api/public-read?"+f')) throw new Error('Pages bundle still calls the retired public read endpoint');
 if (!bundle.includes('queryKey:["platform-token"],queryFn:Y4,enabled:sr,staleTime:0,refetchInterval:1e3')) throw new Error('Official CA does not refresh every second');
 if (!bundle.includes('queryKey:["commodities"],queryFn:Q4,enabled:sr,refetchInterval:1e3,staleTime:0')) throw new Error('Six-stock CAs do not refresh every second');
+if (!bundle.includes('this.publish({wallet:e,account:h,session:null,connecting:!1,stage:"idle",error:""})')) throw new Error('Wallet Standard connection is not independent of the retired auth backend');
+if (bundle.includes('this.request({action:"nonce",wallet:h.address,purpose:"developer"})')) throw new Error('Wallet connection still calls retired authentication');
 if (bundle.includes('M8=function(r){return"/"+r}')) throw new Error('Dynamic modules still preload from the domain root');
 if (bundle.includes('src:"/assets/')) throw new Error('Root-relative bundle assets remain');
 if (bundle.includes(', /assets/')) throw new Error('Root-relative responsive image candidates remain');
@@ -59,9 +64,16 @@ if (!bundle.includes('Six AI stocks. One Vice City market.')) throw new Error('P
 if (!bundle.includes('BAWSAQ live price chart')) throw new Error('Future live chart block is missing');
 if (!html.includes('class="ai8-sidebar"') || !html.includes('/BAWSAQ/assets/ai8-sidebar.css')) throw new Error('Left navigation is missing');
 if (!html.includes('6 AI STOCKS')) throw new Error('BAWSAQ 6 AI STOCKS branding is missing');
-for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','sprunk']) {
+for (const slug of ['chatgta','clawde','geminight','grockstar','deepstreet','la-llama']) {
   if (!fs.existsSync(path.join(site,'goods',slug,'index.html'))) throw new Error(`Six-stock detail route missing: ${slug}`);
 }
+if (bundle.includes('maze-bank') || bundle.includes('fleeca-bank') || bundle.includes('burger-shot') || bundle.includes('cluckin-bell') || bundle.includes('up-n-atom') || bundle.includes('sprunk')) throw new Error('Old company slugs remain in the public bundle');
+if (bundle.includes('https://bawsaq.fund') || html.includes('https://bawsaq.fund')) throw new Error('Old domain remains in the public site');
+if (!bundle.includes('"CA PUBLISHED":"PRELAUNCH / CA TBA"')) throw new Error('Platform market status is not driven by the live official CA');
+if (!bundle.includes('Official CA published. The chart will show live data')) throw new Error('Platform market copy does not change after CA publication');
+if (fs.readFileSync(path.join(site,'assets/Activity-DZ9x3HFI.js'),'utf8').includes('0.15 SOL')) throw new Error('Unverified old treasury reserve remains');
+if (fs.readFileSync(path.join(site,'assets/Docs-cpmzG5VI.js'),'utf8').includes('Why does wallet access depend on the backend?')) throw new Error('Old wallet documentation remains');
+if (!fs.readFileSync(path.join(site,'assets/ai8-sidebar.js'),'utf8').includes('Wallet ${short')) throw new Error('Sidebar does not reflect wallet state');
 for (const name of ['ChatGTA','Clawde','Geminight','Grockstar','DeepStreet','La Llama']) {
   if (!bundle.includes(`"name":${JSON.stringify(name)}`)) throw new Error(`Six-stock company missing: ${name}`);
 }

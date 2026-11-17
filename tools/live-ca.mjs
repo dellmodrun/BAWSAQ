@@ -21,13 +21,17 @@ export function applyLiveCa(site) {
   // BAWSAQ views, leaving the rest of the application unchanged.
   const fetchAnchor = 'return f.set("resource",a.pathname.slice(9))';
   const bridge = `if(a.pathname==="/rest/v1/public_platform_reward_token"||a.pathname==="/rest/v1/public_commodities"){
-    const resource=a.pathname.endsWith("public_platform_reward_token")?"bawsaq_public_platform_reward_token":"bawsaq_public_commodities";
+    const resource=a.pathname.endsWith("public_platform_reward_token")?"bawsaq_public_platform_reward_token":"bawsaq_public_commodities_v2";
     const liveUrl=new URL("${liveOrigin}/rest/v1/"+resource);
     liveUrl.search=a.search;
     const headers=new Headers({apikey:"${publishableKey}",accept:c.get("accept")||"application/json"});
     return e(liveUrl,{method:l,headers,cache:"no-store",signal:i?.signal??(n instanceof Request?n.signal:void 0)})
   }`;
   source = replaceOnce(source, fetchAnchor, bridge + fetchAnchor, 'CA fetch bridge');
+  source = replaceOnce(source,
+    'return f.set("resource",a.pathname.slice(9)),c.get("accept")==="application/vnd.pgrst.object+json"&&f.set("single","1"),f.sort(),e("/api/public-read?"+f,{method:l,signal:i?.signal??(n instanceof Request?n.signal:void 0)})',
+    'return new Response(JSON.stringify({code:"BAWSAQ_PRELAUNCH",message:"The production market backend is not active yet."}),{status:503,headers:{"content-type":"application/json"}})',
+    'retired public read endpoint');
 
   source = replaceOnce(source,
     'queryKey:["platform-token"],queryFn:Y4,enabled:sr,staleTime:15e3,refetchInterval:3e4,refetchOnWindowFocus:"always",refetchOnReconnect:"always"',
