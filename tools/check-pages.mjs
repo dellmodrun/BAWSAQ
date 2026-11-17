@@ -58,7 +58,7 @@ for (const name of ['Qwence','Misstral']) {
   if (bundle.includes(`"name":${JSON.stringify(name)}`)) throw new Error(`Removed company remains: ${name}`);
 }
 if (bundle.includes('name:"Maze Bank"') || bundle.includes('name:"Fleeca Bank"')) throw new Error('Old company roster remains');
-if (!bundle.includes('/assets/stocks/MAZE.png') || !bundle.includes('/assets/stocks/SPRUNK.png')) throw new Error('Original company image references changed');
+if (!bundle.includes('/assets/stocks/gta-six/chatgta.png') || !bundle.includes('/assets/stocks/gta-six/la-llama.png')) throw new Error('New AI stock logo references missing');
 const market=fs.readFileSync(path.join(site,'assets/Coins-CA1CFPin.js'),'utf8');
 if (!market.includes('OFFICIAL / PINNED') || !market.includes('Six AI stocks. One city.')) throw new Error('Market preview is missing');
 const directory=fs.readFileSync(path.join(site,'assets/Commodities-BqprS4wm.js'),'utf8');

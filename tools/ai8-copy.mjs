@@ -2,12 +2,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const roster = [
-  ['maze-bank','ChatGTA','CGTA','banking','Vice City’s conversational AI. It writes plans, answers questions and knows more about this city than it should.','MAZE.png'],
-  ['fleeca-bank','Clawde','CLAW','banking','A careful reasoning lab for the city’s contracts, research and inconvenient fine print.','FLEECA.png'],
-  ['burger-shot','Geminight','GEMI','food','A multimodal network that connects the city’s words, images, maps and cameras.','BURGER.png'],
-  ['cluckin-bell','Grockstar','GROK','food','A real-time intelligence terminal tuned to the city’s fastest feeds and loudest rumors.','CLUCK.png'],
-  ['up-n-atom','DeepStreet','DEEP','food','An accessible reasoning lab bringing big ideas out of the deepest corners of the city.','ATOM.png'],
-  ['sprunk','La Llama','LLMA','drinks','An open model network that runs in garages, storefronts and servers across the coast.','SPRUNK.png']
+  ['maze-bank','ChatGTA','CGTA','banking','Vice City’s conversational AI. It writes plans, answers questions and knows more about this city than it should.','gta-six/chatgta.png'],
+  ['fleeca-bank','Clawde','CLAW','banking','A careful reasoning lab for the city’s contracts, research and inconvenient fine print.','gta-six/clawde.png'],
+  ['burger-shot','Geminight','GEMI','food','A multimodal network that connects the city’s words, images, maps and cameras.','gta-six/geminight.png'],
+  ['cluckin-bell','Grockstar','GROK','food','A real-time intelligence terminal tuned to the city’s fastest feeds and loudest rumors.','gta-six/grockstar.png'],
+  ['up-n-atom','DeepStreet','DEEP','food','An accessible reasoning lab bringing big ideas out of the deepest corners of the city.','gta-six/deepstreet.png'],
+  ['sprunk','La Llama','LLMA','drinks','An open model network that runs in garages, storefronts and servers across the coast.','gta-six/la-llama.png']
 ];
 const main = 'index-Y7lMokl3.js';
 const preset = 'const Ao=';
@@ -18,6 +18,7 @@ export function applyAi8Copy(site) {
   const assets=path.join(site,'assets');
   const base=`/${process.env.GITHUB_REPOSITORY?.split('/').at(-1)||'BAWSAQ'}`;
   rewrite(path.join(assets,main),s=>{
+    s=replaceExact(s,'return r.thumbnail&&i.unshift(n+"-96.webp"),{sources:i,original:e}','return{sources:i,original:e}');
     s=replaceExact(s,'media:"(max-aspect-ratio: 1/1)",srcSet:"/BAWSAQ/assets/leonida/exchange-poster-portrait-640.webp','media:"(max-width: 767px) and (max-aspect-ratio: 1/1)",srcSet:"/BAWSAQ/assets/leonida/exchange-poster-portrait-640.webp');
     s=replaceExact(s,'media:"(min-aspect-ratio: 9/4), (max-width: 767px) and (min-aspect-ratio: 2/1), (max-height: 590px) and (orientation: landscape)"','media:"(min-width: 768px), (max-width: 767px) and (min-aspect-ratio: 2/1), (max-height: 590px) and (orientation: landscape)"');
     s=replaceExact(s,'prelaunch:"Available at launch",checking:"Checking address…",unavailable:"Address unavailable"','prelaunch:"TBA",checking:"TBA",unavailable:"TBA"');

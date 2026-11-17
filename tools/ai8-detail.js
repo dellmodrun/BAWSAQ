@@ -22,7 +22,7 @@ function Page(){
     React.jsx(Link,{className:'ai8-detail-back',to:'/goods',children:'← THE SIX AI STOCKS'}),
     React.jsxs('section',{className:'ai8-detail-hero',children:[
       React.jsxs('div',{children:[React.jsx('p',{className:'ai8-eyebrow',children:'BAWSAQ / FICTIONAL AI STOCK'}),React.jsx('h1',{children:item.name}),React.jsx('p',{className:'ai8-detail-lead',children:item.description}),React.jsxs('p',{className:'ai8-detail-tag',children:['$'+item.symbol,' · ',field,' · PRELAUNCH']})]}),
-      React.jsx('img',{src:item.image_source_url,alt:`${item.name} temporary catalog emblem`,width:230,height:230})
+      React.jsx('img',{src:item.image_source_url,alt:`${item.name} logo`,width:230,height:230})
     ]}),
     React.jsxs('section',{className:'ai8-detail-body',children:[
       React.jsxs('article',{children:[React.jsx('p',{className:'ai8-eyebrow',children:'THE CITY STORY'}),React.jsx('h2',{children:'A new kind of company in Vice City.'}),React.jsx('p',{children:story}),React.jsx('p',{children:`${item.name} is an original fictional business inspired by ${reference}. It is not affiliated with that product or its maker.`})]}),

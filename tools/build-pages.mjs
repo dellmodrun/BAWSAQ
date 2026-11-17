@@ -94,10 +94,10 @@ applySixMarketPreview(output, base);
 fs.copyFileSync(path.join(root, 'tools', 'ai8-detail.js'), path.join(output, 'assets', 'CommodityDetail-B_zrO4xK.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.js'), path.join(output, 'assets', 'ai8-sidebar.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.css'), path.join(output, 'assets', 'ai8-sidebar.css'));
-const legacyImages=[['CGTA','MAZE'],['CLAW','FLEECA'],['GEMI','BURGER'],['GROK','CLUCK'],['DEEP','ATOM'],['LLMA','SPRUNK']];
+const stockImages=[['CGTA','chatgta'],['CLAW','clawde'],['GEMI','geminight'],['GROK','grockstar'],['DEEP','deepstreet'],['LLMA','la-llama']];
 const previewDirectory=path.join(output,'assets','stocks','previews');
 fs.mkdirSync(previewDirectory,{recursive:true});
-for(const [next,old] of legacyImages)fs.copyFileSync(path.join(output,'assets','stocks',`${old}.png`),path.join(previewDirectory,`${next}.png`));
+for(const [symbol,name] of stockImages)fs.copyFileSync(path.join(output,'assets','stocks','gta-six',`${name}.png`),path.join(previewDirectory,`${symbol}.png`));
 for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','sprunk']) {
   const destination=path.join(output,'goods',slug);
   fs.mkdirSync(destination,{recursive:true});
