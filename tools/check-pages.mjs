@@ -11,8 +11,8 @@ for (const file of [
   'assets/bawsaq-brand.css',
   'assets/platform/bawsaq-logo-transparent-clean.png',
   'assets/ai-city/hero-wide.webp',
-  'assets/ai-city/hero-nine-wide.webp', 'assets/ai-city/hero-nine-mobile.webp',
-  'assets/ai-city/share-nine.jpg',
+  'assets/ai-city/hero-poster-wide.webp', 'assets/ai-city/hero-poster-mobile.webp',
+  'assets/ai-city/share-poster.jpg',
   'assets/ai-city/chatgta-studio.webp', 'assets/ai-city/la-llama-garage.webp',
   'assets/platform/bawsaq-boot-scene.webp',
   'assets/CommodityDetail-B_zrO4xK.js',
@@ -42,14 +42,16 @@ const css = fs.readFileSync(path.join(site, 'assets/index-BXcgnZ7x.css'), 'utf8'
 if (css.includes('url(/assets/')) throw new Error('Root-relative CSS assets remain');
 if (css.includes('url(/fonts/')) throw new Error('Root-relative CSS fonts remain');
 if (!html.includes('/BAWSAQ/assets/bawsaq-brand.css')) throw new Error('BAWSAQ brand stylesheet is missing');
+if (!fs.readFileSync(path.join(site,'assets/bawsaq-brand.css'),'utf8').includes('.cm-art .cm-art-source{background:transparent}')) throw new Error('Stock logos still have a solid backing');
 if (!html.includes('/BAWSAQ/assets/platform/bawsaq-logo-transparent-clean.png')) throw new Error('Transparent BAWSAQ boot logo is missing');
 if (!html.includes('/BAWSAQ/assets/platform/bawsaq-boot-scene.webp')) throw new Error('BAWSAQ boot scene preload is missing');
 if(fs.existsSync(path.join(site,'assets/leonida'))) throw new Error('Legacy scene assets are still being published');
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
 if (!bundle.includes('className:"ai-city-wordmark"')) throw new Error('Homepage project-name wordmark is missing');
-if (!bundle.includes('hero-nine-wide.webp') || !bundle.includes('hero-nine-mobile.webp')) throw new Error('Nine-panel homepage art is missing');
-if (!html.includes('/assets/ai-city/share-nine.jpg')) throw new Error('Nine-panel share preview is missing');
+if (!bundle.includes('hero-poster-wide.webp') || !bundle.includes('hero-poster-mobile.webp')) throw new Error('Irregular AI poster is missing');
+if (bundle.includes('hero-nine-wide.webp') || bundle.includes('hero-nine-mobile.webp')) throw new Error('Regular grid poster remains');
+if (!html.includes('/assets/ai-city/share-poster.jpg')) throw new Error('AI poster share preview is missing');
 if (!bundle.includes('Six AI stocks. One Vice City market.')) throw new Error('Project introduction is missing');
 if (!bundle.includes('BAWSAQ live price chart')) throw new Error('Future live chart block is missing');
 if (!html.includes('class="ai8-sidebar"') || !html.includes('/BAWSAQ/assets/ai8-sidebar.css')) throw new Error('Left navigation is missing');

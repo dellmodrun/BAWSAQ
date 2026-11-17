@@ -263,6 +263,9 @@ body:has(.coin-register) .mint-strip-wrap{display:none}
 .printer-app .docs-hub .dh-outline a,.printer-app .docs-hub .dh-breadcrumb,.printer-app .docs-hub .dh-article-meta{color:#d6abc1}
 
 .cm-art .cm-art-source{inset:10%;width:80%;height:80%}
+.cm-art .cm-art-source{background:transparent}
+.cm-art:has(>.cm-art-source.is-loaded) .cm-art-base{visibility:hidden}
+.six-market-card img{background:transparent}
 
 .printer-app .exchange-hero h1{width:min(72%,780px)}
 .exchange-hero h1 .ai-city-wordmark{display:block;color:#fff1d3;font:900 clamp(42px,8.5vw,128px)/.9 var(--lse-display);letter-spacing:-.055em;text-align:center;-webkit-text-stroke:1px #381128;text-shadow:0 3px 0 #521332,0 7px 0 #2a0c26,0 18px 35px #18091ccc}
