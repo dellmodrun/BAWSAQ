@@ -14,6 +14,18 @@ qa-copy.png
 .edge-audit/
 .edge-audit-mobile/
 .qa-browser-ai8copy/
+.qa-dom-ai8/
+.qa-browser-ai8final/
+.qa-browser-ai8detail2/
+.qa-browser-ai8detail3/
+.qa-browser-sidebar/
+.qa-browser-sidebar2/
+.qa-browser-sidebar3/
+qa-final-*.png
+qa-sidebar*.png
+.qa-browser-sidecheck/
+.qa-browser-sidecheck2/
+qa-sidecheck*.png
 mirror/assets/platform/bawsaq-logo-transparent.png
 mirror/assets/platform/bawsaq-logo-transparent-v2.png
 

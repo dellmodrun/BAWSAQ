@@ -26,9 +26,20 @@ export function applyAi8Copy(site) {
     s=s.slice(0,start)+preset+JSON.stringify(objects)+s.slice(end);
     s=replaceExact(s,'const T_=[{id:"banking",label:"Banking",count:2},{id:"food",label:"Food",count:4},{id:"drinks",label:"Drinks",count:3},{id:"retail",label:"Retail",count:1},{id:"tech",label:"Tech",count:1},{id:"auto",label:"Auto",count:1}]','const T_=[{id:"banking",label:"Foundation AI",count:2},{id:"food",label:"AI Systems",count:4},{id:"drinks",label:"Open Models",count:2}]');
     s=replaceExact(s,'const CO=["maze-bank","burger-shot","vapid"]','const CO=["maze-bank","burger-shot","sprunk"]');
+    s=replaceExact(s,'{to:"/goods",label:"Stocks",scene:"district"}','{to:"/goods",label:"The AI 8",scene:"district"}');
+    s=replaceExact(s,'{to:"/explore",label:"Explore coins",scene:"district"}','{to:"/explore",label:"Market",scene:"district"}');
     const copy=[
       ['Official stocks and their last reported 24-hour price changes','AI 8 companies and their last reported market changes'],
       ['Explore stocks','Meet the AI 8'],['Market spotlight','AI 8 spotlight'],['View all ",op.length," stocks','View all ",op.length," companies'],
+      ['Stock registry','AI 8 registry'],['Showing the stock catalog.','Showing the AI 8 catalog.'],
+      ['Search stocks and coins','Search AI 8 and coins'],['children:"Stocks"','children:"AI 8"'],
+      ['Stock pairs','AI 8 pairs'],['Stock tokens represent','AI 8 themed tokens represent'],
+      ['The $BAWSAQ vault','The AI 8 vault'],
+      ['Each coin’s treasury checks for rewards every five minutes. Eligible holders share the available $BAWSAQ.','The AI 8 is an original fictional roster. Markets and holder rewards open only after their on-chain systems are verified.'],
+      ['Each coin\'s treasury checks for rewards every five minutes. Eligible holders share the available $BAWSAQ.','The AI 8 is an original fictional roster. Markets and holder rewards open only after their on-chain systems are verified.'],
+      ['Holder minimum','Market status'],['100,000','Prelaunch'],['Reward cycle','Index value'],['5 min','Not live'],
+      ['Stock tokens represent fictional AI companies. Holding a token does not confer company ownership.','AI 8 companies are original fiction. Any future tokens would not confer ownership in real AI companies.'],
+      ['Browse the asset registry','Browse the AI 8'],['Launch coin','Create coin'],
       [' stocks"]',' AI companies"]'],[' stock"]',' AI company"]'],
       ['Launch a coin','Create a coin'],['Official stocks','The AI 8'],['official stocks','AI 8 companies'],['official stock','AI 8 company'],
       ['fictional companies','fictional AI companies'],['fictional company','fictional AI company'],['Stock sectors','AI fields'],
@@ -36,6 +47,10 @@ export function applyAi8Copy(site) {
       ['Dealing in Vice City’s ups and downs.','Eight minds. One volatile city.'],['Dealing in Vice City\'s ups and downs.','Eight minds. One volatile city.']
     ];
     for(const [a,b] of copy)s=s.replaceAll(a,b);
+    const homeAnchor='R.jsx(IO,{}),R.jsx(UO,{assets:r.rows';
+    const extra=`R.jsxs("section",{className:"ai8-about",children:[R.jsx("p",{className:"ai8-eyebrow",children:"01 / THE PROJECT"}),R.jsx("h2",{children:"Eight AI minds. One Vice City market."}),R.jsx("p",{children:"BAWSAQ AI 8 imagines eight familiar AI model archetypes as original companies in a fictional Vice City economy. ChatGTA, Clawde, Geminight, Grockstar, DeepStreet, Qwence, La Llama and Misstral each give the city a different kind of intelligence."}),R.jsx("p",{children:"The names are satire and the companies are fictional. The catalog is live to explore; token markets and the index value will appear only after their addresses and pricing rules are verified."}),R.jsx(At,{to:"/docs?guide=overview",children:"Read how BAWSAQ works ↗"})]}),R.jsxs("section",{className:"ai8-chart",children:[R.jsxs("div",{className:"ai8-chart-head",children:[R.jsxs("div",{children:[R.jsx("p",{className:"ai8-eyebrow",children:"02 / PLATFORM MARKET"}),R.jsx("h2",{children:"$BAWSAQ market"}),R.jsx("p",{children:"The official token chart and trading route will appear here when the verified contract address is published."})]}),R.jsx("span",{className:"ai8-chart-status",children:/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(e.platformMint??"")?"LIVE MARKET":"PRELAUNCH / CA TBA"})]}),/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(e.platformMint??"")?R.jsxs(R.Fragment,{children:[R.jsx("iframe",{className:"ai8-chart-frame",title:"BAWSAQ live price chart",loading:"lazy",src:"https://dexscreener.com/solana/"+encodeURIComponent(e.platformMint)+"?embed=1&theme=dark",referrerPolicy:"no-referrer"}),R.jsx("a",{className:"ai8-trade-link",href:"https://pump.fun/coin/"+encodeURIComponent(e.platformMint),target:"_blank",rel:"noopener noreferrer",children:"Open $BAWSAQ trading page ↗"})]}):R.jsxs("div",{className:"ai8-chart-wait",children:[R.jsx("span",{children:"NO LIVE CHART YET"}),R.jsx("strong",{children:"Market opens after the official CA is verified."}),R.jsx("p",{children:"No simulated candles, volume or price data."})]})]}),`;
+    s=replaceExact(s,homeAnchor,extra+homeAnchor);
+    s=replaceExact(s,'import("./CommodityDetail-B_zrO4xK.js").then(r=>r.a),__vite__mapDeps([5,6,7,8])','import("./CommodityDetail-B_zrO4xK.js").then(r=>r.a),__vite__mapDeps([])');
     return s;
   });
   for(const name of ['Commodities-BqprS4wm.js','Launch-C2Z7OZxC.js','Coins-CA1CFPin.js','Activity-DZ9x3HFI.js','Earnings-CO_PrL-7.js']){
@@ -69,8 +84,13 @@ export function applyAi8Copy(site) {
   for(const route of ['','goods','explore','launch','ledger','earnings','docs','adminPanel']){
     const file=path.join(site,route,'index.html');
     if(!fs.existsSync(file))continue;
+    const links=[['/','Home','exchange-sunset.webp'],['/goods','The AI 8','financial-district.webp'],['/explore','Market','trading-floor.webp'],['/ledger','Activity','settlement-desk.webp'],['/earnings','Earnings','vice-vault.webp'],['/docs','Documentation','signal-coast-800.webp']];
+    const sidebar=`<aside class="ai8-sidebar" aria-label="Site navigation"><a class="ai8-side-brand" href="${base}/">BAWSAQ <small>AI 8</small></a><nav aria-label="Main pages">${links.map(([href,label,image],i)=>`<a class="ai8-side-card" href="${base}${href}" style="background-image:linear-gradient(90deg,#1c0919e8,#1c09198a),url('${base}/assets/leonida/${image}')"><span>0${i+1} / ${label}</span><b aria-hidden="true">↗</b></a>`).join('')}</nav><div class="ai8-side-extras"><a href="${base}/#market-search">Search market ↗</a><a href="${base}/docs?guide=vice-rewards">$BAWSAQ rewards ↗</a></div><div class="ai8-side-bottom"><a class="ai8-side-launch" href="${base}/launch/">+ Launch a coin</a><button type="button" class="ai8-side-wallet">Connect wallet</button><a href="https://x.com/bawsaqfund" target="_blank" rel="noopener noreferrer" aria-label="BAWSAQ on X"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.933Zm-1.29 19.49h2.039L6.487 3.24H4.299l13.312 17.403Z"/></svg> X</a></div></aside><script src="${base}/assets/ai8-sidebar.js" defer></script>`;
+    const completeSidebar=sidebar.replace('</div><div class="ai8-side-bottom">',`<a href="${base}/adminPanel/">Operator workspace ↗</a></div><div class="ai8-side-bottom">`);
     rewrite(file,s=>s.replaceAll('Explore BAWSAQ’s fictional company stocks and launch coins on Solana.','Meet the eight original AI companies in BAWSAQ’s fictional Vice City market.')
       .replaceAll('Explore fictional company stocks, launch a coin, and follow its rewards on Solana.','Explore eight original AI companies in a Vice City inspired market.')
-      .replaceAll('Sunset over the Leonida financial district','Vice City AI 8 market'));
+      .replaceAll('Sunset over the Leonida financial district','Vice City AI 8 market')
+      .replace('</head>',`<link rel="stylesheet" href="${base}/assets/ai8-sidebar.css"></head>`)
+      .replace('</body>',completeSidebar+'</body>'));
   }
 }

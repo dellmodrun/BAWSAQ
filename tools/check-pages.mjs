@@ -12,6 +12,8 @@ for (const file of [
   'assets/platform/bawsaq-logo-transparent-clean.png',
   'assets/platform/bawsaq-brand-art.png',
   'assets/platform/bawsaq-boot-scene.webp',
+  'assets/CommodityDetail-B_zrO4xK.js',
+  'assets/ai8-sidebar.js', 'assets/ai8-sidebar.css',
   'explore/index.html', 'goods/index.html', 'launch/index.html',
   'ledger/index.html', 'earnings/index.html', 'docs/index.html'
 ]) {
@@ -42,6 +44,12 @@ if (!html.includes('/BAWSAQ/assets/platform/bawsaq-boot-scene.webp')) throw new 
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
 if (!bundle.includes('leonida/exchange-poster-title.svg')) throw new Error('Homepage project-name wordmark is missing');
+if (!bundle.includes('Eight AI minds. One Vice City market.')) throw new Error('Project introduction is missing');
+if (!bundle.includes('BAWSAQ live price chart')) throw new Error('Future live chart block is missing');
+if (!html.includes('class="ai8-sidebar"') || !html.includes('/BAWSAQ/assets/ai8-sidebar.css')) throw new Error('Left navigation is missing');
+for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','bean-machine','sprunk','ecola']) {
+  if (!fs.existsSync(path.join(site,'goods',slug,'index.html'))) throw new Error(`AI 8 detail route missing: ${slug}`);
+}
 for (const name of ['ChatGTA','Clawde','Geminight','Grockstar','DeepStreet','Qwence','La Llama','Misstral']) {
   if (!bundle.includes(`"name":${JSON.stringify(name)}`)) throw new Error(`AI 8 company missing: ${name}`);
 }
