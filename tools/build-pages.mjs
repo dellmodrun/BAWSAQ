@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { applyAi8Copy } from './ai8-copy.mjs';
 import { applySixMarketPreview } from './six-market-preview.mjs';
 import { replaceLegacyArt } from './replace-legacy-art.mjs';
+import { applyLiveCa } from './live-ca.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const source = path.join(root, 'mirror');
@@ -92,6 +93,7 @@ function walk(directory) {
 
 walk(output);
 applyAi8Copy(output);
+applyLiveCa(output);
 applySixMarketPreview(output, base);
 replaceLegacyArt(output);
 fs.copyFileSync(path.join(root, 'tools', 'ai8-detail.js'), path.join(output, 'assets', 'CommodityDetail-B_zrO4xK.js'));

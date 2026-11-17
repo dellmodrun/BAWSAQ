@@ -35,6 +35,9 @@ if (bundle.includes('YO=Fk(P_,{basename:')) throw new Error('Basename was applie
 if (!bundle.includes('window.setTimeout(c,550)')) throw new Error('Splash cleanup timeout is missing');
 if (bundle.includes('f.finished.then(c,c)')) throw new Error('Splash still waits for an infinite logo animation');
 if (!bundle.includes('M8=function(r){return"/BAWSAQ/"+r}')) throw new Error('Dynamic module preload base is missing');
+if (!bundle.includes('bawsaq_public_platform_reward_token') || !bundle.includes('bawsaq_public_commodities')) throw new Error('Independent CA views are not connected');
+if (!bundle.includes('queryKey:["platform-token"],queryFn:Y4,enabled:sr,staleTime:0,refetchInterval:1e3')) throw new Error('Official CA does not refresh every second');
+if (!bundle.includes('queryKey:["commodities"],queryFn:Q4,enabled:sr,refetchInterval:1e3,staleTime:0')) throw new Error('Six-stock CAs do not refresh every second');
 if (bundle.includes('M8=function(r){return"/"+r}')) throw new Error('Dynamic modules still preload from the domain root');
 if (bundle.includes('src:"/assets/')) throw new Error('Root-relative bundle assets remain');
 if (bundle.includes(', /assets/')) throw new Error('Root-relative responsive image candidates remain');
