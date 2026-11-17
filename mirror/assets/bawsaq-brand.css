@@ -223,5 +223,36 @@ body::before {
 .ai8-detail-tag{color:#ff8fc4;font-weight:800;font-size:12px;letter-spacing:.06em;margin:24px 0 0}
 .ai8-detail-body{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;padding:55px 0}
 .ai8-detail-body h2{font-size:clamp(30px,3vw,46px);margin:5px 0 18px}.ai8-detail-body p{color:#dfbfd0;line-height:1.7;font-size:15px}.ai8-detail-body aside{border:1px solid #ff8bc03d;background:#230e20;padding:30px}.ai8-detail-body aside a{color:#ff8fc4;font-weight:800;font-size:13px}
+.ai8-detail-mint{display:block;overflow-wrap:anywhere;padding:12px;margin:14px 0;background:#160914;border:1px solid #ff8bc03d;color:#ffdbec;font-size:12px}
 @media(max-width:700px){.ai8-detail{margin-top:20px}.ai8-detail-hero{min-height:0;padding:30px 22px}.ai8-detail-hero img{display:none}.ai8-detail-body{grid-template-columns:1fr;gap:20px;padding-top:35px}}
+
+body:has(.coin-register) .mint-strip-wrap{display:none}
+.six-market{margin:28px 0 42px;color:#fff3f8}
+.six-market-heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:20px}
+.six-market-heading>div{min-width:0}
+.six-market-kicker{display:block;margin-bottom:7px;color:#ff7db5;font-size:11px;font-weight:800;letter-spacing:.16em}
+.six-market-heading h2{font-size:clamp(30px,3.3vw,46px);font-weight:900;letter-spacing:-.04em}
+.six-market-heading p{max-width:400px;color:#dcb9ce;font-size:14px;line-height:1.55}
+.six-market-official{display:grid;grid-template-columns:72px minmax(180px,1fr) minmax(180px,.8fr);align-items:center;gap:18px;min-height:132px;padding:22px 25px;margin-bottom:14px;background:radial-gradient(circle at 8% 50%,#f54b9b38,transparent 38%),linear-gradient(110deg,#41142f,#1d0a1b);border:1px solid #ff80b985;border-radius:14px;box-shadow:0 15px 45px #09020a42}
+.six-market-official>img{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 0 12px #ff79b78a)}
+.six-market-badge{display:inline-block;margin-bottom:7px;color:#ff91c1;font-size:10px;letter-spacing:.14em;font-weight:900}
+.six-market-official h3{font-size:clamp(24px,2.5vw,34px);font-weight:900;line-height:1.1}
+.six-market-official p{margin-top:5px;color:#e3bfd2;font-size:13px}
+.six-market-address{justify-self:end;min-width:0;max-width:100%;text-align:right}
+.six-market-address small{display:block;color:#dbb8cd;font-size:11px;margin-bottom:5px}
+.six-market-address strong,.six-market-address a{display:block;color:#fff;font:700 15px/1.4 var(--mono);overflow-wrap:anywhere}
+.six-market-address a:hover{color:#ff8fc1}
+.six-market-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.six-market-card{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:start;min-height:194px;padding:18px;overflow:hidden;border:1px solid #ff8dc342;border-radius:12px;background:#27101f;color:#fff6fa;transition:transform .2s,border-color .2s,box-shadow .2s}
+.six-market-card:hover{transform:translateY(-3px);border-color:#ff91c4;box-shadow:0 16px 34px #08020866;color:#fff}
+.six-market-card-scene{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;opacity:.85}
+.six-market-card img{width:52px;height:52px;object-fit:contain;border-radius:9px;background:#210d1ae0;padding:4px}
+.six-market-card-copy{display:grid;gap:3px;margin-top:auto;padding-top:20px}
+.six-market-card-copy strong{font-size:18px;font-weight:850}
+.six-market-card-copy small{font-size:11px;color:#f6d8e7}
+.six-market-card-status{position:absolute;top:18px;right:18px;padding:5px 8px;border:1px solid #ffbdde73;border-radius:99px;background:#160811bb;color:#ffd8ec;font-size:9px;font-weight:900;letter-spacing:.1em}
+.six-market-card-arrow{position:absolute;right:18px;bottom:19px;font-size:20px}
+.six-market-note{margin:15px 2px 0;color:#caa8bc;font-size:12px;line-height:1.6}
+@media(max-width:900px){.six-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.six-market-heading{display:block}.six-market-heading p{margin-top:8px}.six-market-official{grid-template-columns:52px 1fr;gap:12px;padding:18px}.six-market-official>img{width:52px;height:52px}.six-market-address{grid-column:1/-1;justify-self:start;text-align:left}.six-market-grid{grid-template-columns:1fr}.six-market-card{min-height:170px}}
 

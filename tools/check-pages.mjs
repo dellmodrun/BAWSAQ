@@ -15,7 +15,7 @@ for (const file of [
   'assets/CommodityDetail-B_zrO4xK.js',
   'assets/ai8-sidebar.js', 'assets/ai8-sidebar.css',
   'explore/index.html', 'goods/index.html', 'launch/index.html',
-  'ledger/index.html', 'earnings/index.html', 'docs/index.html'
+  'ledger/index.html', 'earnings/index.html', 'docs/index.html', 'adminPanel/index.html'
 ]) {
   const target = path.join(site, file);
   if (!fs.existsSync(target) || (file !== '.nojekyll' && fs.statSync(target).size === 0)) {
@@ -44,17 +44,24 @@ if (!html.includes('/BAWSAQ/assets/platform/bawsaq-boot-scene.webp')) throw new 
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
 if (!bundle.includes('leonida/exchange-poster-title.svg')) throw new Error('Homepage project-name wordmark is missing');
-if (!bundle.includes('Eight AI minds. One Vice City market.')) throw new Error('Project introduction is missing');
+if (!bundle.includes('Six AI stocks. One Vice City market.')) throw new Error('Project introduction is missing');
 if (!bundle.includes('BAWSAQ live price chart')) throw new Error('Future live chart block is missing');
 if (!html.includes('class="ai8-sidebar"') || !html.includes('/BAWSAQ/assets/ai8-sidebar.css')) throw new Error('Left navigation is missing');
-for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','bean-machine','sprunk','ecola']) {
-  if (!fs.existsSync(path.join(site,'goods',slug,'index.html'))) throw new Error(`AI 8 detail route missing: ${slug}`);
+for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','sprunk']) {
+  if (!fs.existsSync(path.join(site,'goods',slug,'index.html'))) throw new Error(`Six-stock detail route missing: ${slug}`);
 }
-for (const name of ['ChatGTA','Clawde','Geminight','Grockstar','DeepStreet','Qwence','La Llama','Misstral']) {
-  if (!bundle.includes(`"name":${JSON.stringify(name)}`)) throw new Error(`AI 8 company missing: ${name}`);
+for (const name of ['ChatGTA','Clawde','Geminight','Grockstar','DeepStreet','La Llama']) {
+  if (!bundle.includes(`"name":${JSON.stringify(name)}`)) throw new Error(`Six-stock company missing: ${name}`);
+}
+for (const name of ['Qwence','Misstral']) {
+  if (bundle.includes(`"name":${JSON.stringify(name)}`)) throw new Error(`Removed company remains: ${name}`);
 }
 if (bundle.includes('name:"Maze Bank"') || bundle.includes('name:"Fleeca Bank"')) throw new Error('Old company roster remains');
-if (!bundle.includes('/assets/stocks/MAZE.png') || !bundle.includes('/assets/stocks/ECOLA.png')) throw new Error('Original company image references changed');
+if (!bundle.includes('/assets/stocks/MAZE.png') || !bundle.includes('/assets/stocks/SPRUNK.png')) throw new Error('Original company image references changed');
+const market=fs.readFileSync(path.join(site,'assets/Coins-CA1CFPin.js'),'utf8');
+if (!market.includes('OFFICIAL / PINNED') || !market.includes('Six stocks. One city.')) throw new Error('Market preview is missing');
+const admin=fs.readFileSync(path.join(site,'adminPanel/index.html'),'utf8');
+if (!admin.includes('NOT CONFIGURED ON GITHUB PAGES')) throw new Error('Admin status page is missing');
 
 console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
 

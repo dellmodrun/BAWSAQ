@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applyAi8Copy } from './ai8-copy.mjs';
+import { applySixMarketPreview } from './six-market-preview.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const source = path.join(root, 'mirror');
@@ -89,18 +90,21 @@ function walk(directory) {
 
 walk(output);
 applyAi8Copy(output);
+applySixMarketPreview(output, base);
 fs.copyFileSync(path.join(root, 'tools', 'ai8-detail.js'), path.join(output, 'assets', 'CommodityDetail-B_zrO4xK.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.js'), path.join(output, 'assets', 'ai8-sidebar.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.css'), path.join(output, 'assets', 'ai8-sidebar.css'));
-const legacyImages=[['CGTA','MAZE'],['CLAW','FLEECA'],['GEMI','BURGER'],['GROK','CLUCK'],['DEEP','ATOM'],['QWEN','BEAN'],['LLMA','SPRUNK'],['MIST','ECOLA']];
+const legacyImages=[['CGTA','MAZE'],['CLAW','FLEECA'],['GEMI','BURGER'],['GROK','CLUCK'],['DEEP','ATOM'],['LLMA','SPRUNK']];
 const previewDirectory=path.join(output,'assets','stocks','previews');
 fs.mkdirSync(previewDirectory,{recursive:true});
 for(const [next,old] of legacyImages)fs.copyFileSync(path.join(output,'assets','stocks',`${old}.png`),path.join(previewDirectory,`${next}.png`));
-for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','bean-machine','sprunk','ecola']) {
+for (const slug of ['maze-bank','fleeca-bank','burger-shot','cluckin-bell','up-n-atom','sprunk']) {
   const destination=path.join(output,'goods',slug);
   fs.mkdirSync(destination,{recursive:true});
   fs.copyFileSync(path.join(output,'index.html'),path.join(destination,'index.html'));
 }
+fs.writeFileSync(path.join(output, 'adminPanel', 'index.html'),
+  fs.readFileSync(path.join(root, 'tools', 'admin-status.html'), 'utf8').replaceAll('__BASE__', base));
 if (!routerPatched) throw new Error('Unable to configure the BAWSAQ router basename');
 if (!splashPatched) throw new Error('Unable to configure the BAWSAQ splash cleanup');
 if (!dynamicPreloadPatched) throw new Error('Unable to configure the BAWSAQ dynamic preload base');
