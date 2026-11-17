@@ -1,0 +1,15 @@
+{
+  "name": "bawsaq-local-mirror",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "mirror": "node scripts/mirror.mjs",
+    "capture": "node scripts/capture-runtime-assets.mjs",
+    "start": "node server.mjs",
+    "check": "node scripts/check.mjs",
+    "build:pages": "node tools/build-pages.mjs",
+    "check:pages": "node tools/check-pages.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

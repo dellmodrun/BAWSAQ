@@ -1,0 +1,12 @@
+node_modules/
+_site/
+.qa-browser/
+.qa-browser2/
+.qa-dom/
+.env
+.env.*
+*.pem
+*.key
+*keypair*.json
+qa-pages.png
+

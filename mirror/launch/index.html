@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="theme-color" content="#0c0d1b"/><meta name="color-scheme" content="dark"/><meta name="description" content="Explore BAWSAQ’s fictional company stocks and launch coins on Solana."/><link rel="canonical" href="https://bawsaq.fund/"/>
+<link rel="preload" href="/fonts/dm-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin/><link rel="icon" type="image/svg+xml" href="/assets/leonida/exchange-mark.svg"/><link rel="apple-touch-icon" href="/assets/leonida/apple-touch-icon.png"/><meta property="og:site_name" content="BAWSAQ"/><meta property="og:url" content="https://bawsaq.fund/"/><meta property="og:image" content="https://bawsaq.fund/assets/leonida/exchange-share.jpg"/><meta property="og:image:alt" content="Sunset over the Leonida financial district"/><meta name="twitter:image" content="https://bawsaq.fund/assets/leonida/exchange-share.jpg"/><meta property="og:type" content="website"/><meta property="og:title" content="BAWSAQ"/><meta property="og:description" content="Explore fictional company stocks, launch a coin, and follow its rewards on Solana."/><meta name="twitter:card" content="summary_large_image"/><title>BAWSAQ</title>
+<script>
+  performance.mark('leonida-boot-start');
+  // Apply the saved motion setting before the first paint, while the app is downloading.
+  try {
+    if (localStorage.getItem('leonida:motion-preference') === 'reduced') {
+      document.documentElement.dataset.lseMotion = 'reduced';
+    }
+  } catch { /* Storage is optional. */ }
+</script>
+<style>
+  html, body { margin: 0; background: #0c0d1b; color: #f1eaff; }
+  #goods-boot {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: linear-gradient(189deg, #1f1f38 0.55%, #18182d 30.38%, #111222 65.19%, #0c0d1b 100%);
+  }
+  #goods-boot.is-leaving { opacity: 0; pointer-events: none; }
+  .boot-lockup { display: grid; justify-items: center; gap: 23px; }
+  .boot-horizon {
+    display: grid;
+    place-items: center;
+    position: relative;
+    width: min(70vw, 384px);
+  }
+  .boot-horizon::before {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b1a1e866 38%, transparent 43% 57%, #b1a1e866 62%, transparent);
+  }
+  .boot-horizon svg { position: relative; display: block; width: clamp(76px, 9vw, 96px); height: auto; }
+  .boot-edge-light {
+    transform-box: view-box;
+    transform-origin: 50% 50%;
+    transform: rotate(-55deg);
+  }
+  .boot-name {
+    color: #e5ddff;
+    font: 500 10px/1.5 system-ui, sans-serif;
+    letter-spacing: .24em;
+    text-indent: .24em;
+    text-transform: uppercase;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-lse-motion="reduced"]) #goods-boot { transition: opacity 480ms cubic-bezier(.4, 0, .2, 1); }
+    html:not([data-lse-motion="reduced"]) .boot-edge-light { animation: boot-trace 3.2s linear infinite; }
+  }
+  @keyframes boot-trace {
+    from { transform: rotate(-55deg); }
+    to { transform: rotate(305deg); }
+  }
+</style>
+  <script type="module" crossorigin src="/assets/index-Y7lMokl3.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BXcgnZ7x.css">
+</head><body>
+  <div id="goods-boot" role="status" aria-label="Loading BAWSAQ">
+    <div class="boot-lockup" aria-hidden="true">
+      <div class="boot-horizon">
+        <svg viewBox="0 0 64 64" width="96" height="96" focusable="false">
+          <defs>
+            <linearGradient id="boot-sunset" x2="0.24" y2="1">
+              <stop stop-color="#f1eaff"/><stop offset=".5" stop-color="#ccc2f5"/><stop offset="1" stop-color="#988bd0"/>
+            </linearGradient>
+            <g id="boot-mark">
+              <path d="M7 32a25 25 0 0 1 50 0H48V17l-8 6v9h-5V21l-8 6v5h-5v-6l-8 6H7Z"/>
+              <path d="M7 36h50l-3 5H9zM11 45h40l-5 5H16zM20 54h22l-5 4H26z"/>
+            </g>
+            <mask id="boot-rim" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+              <use href="#boot-mark" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+            </mask>
+            <radialGradient id="boot-glint" fx="66%">
+              <stop stop-color="#fffaff"/>
+              <stop offset=".28" stop-color="#eadfff"/>
+              <stop offset=".64" stop-color="#b597ff" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#9470ff" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="boot-bloom" filterUnits="userSpaceOnUse" x="0" y="0" width="64" height="64" color-interpolation-filters="sRGB">
+              <feGaussianBlur stdDeviation="1.8"/>
+              <feComponentTransfer><feFuncA type="linear" slope="2"/></feComponentTransfer>
+              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <use href="#boot-mark" fill="url(#boot-sunset)"/>
+          <g filter="url(#boot-bloom)">
+            <g mask="url(#boot-rim)">
+              <ellipse class="boot-edge-light" cx="32" cy="9" rx="23" ry="14" fill="url(#boot-glint)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <span class="boot-name">BAWSAQ</span>
+    </div>
+  </div>
+  <div id="root" inert></div>
+  <noscript><style>#goods-boot{display:none}</style><p style="padding:48px;font:18px system-ui">BAWSAQ requires JavaScript to connect to market and reward data.</p></noscript>
+</body></html>
