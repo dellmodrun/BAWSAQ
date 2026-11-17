@@ -21,7 +21,10 @@ const html = fs.readFileSync(path.join(site, 'index.html'), 'utf8');
 const bundle = fs.readFileSync(path.join(site, 'assets/index-Y7lMokl3.js'), 'utf8');
 if (!html.includes('/BAWSAQ/assets/index-Y7lMokl3.js')) throw new Error('Homepage asset base was not rewritten');
 if (!html.includes('/BAWSAQ/fonts/')) throw new Error('Homepage font base was not rewritten');
-if (!bundle.includes('basename:"/BAWSAQ"')) throw new Error('Router basename is missing');
+if (!bundle.includes('R.jsx(gA,{basename:"/BAWSAQ",children:R.jsx(QO,{})})')) throw new Error('BrowserRouter basename is missing');
+if (bundle.includes('YO=Fk(P_,{basename:')) throw new Error('Basename was applied to the route matcher instead of BrowserRouter');
+if (!bundle.includes('window.setTimeout(c,550)')) throw new Error('Splash cleanup timeout is missing');
+if (bundle.includes('f.finished.then(c,c)')) throw new Error('Splash still waits for an infinite logo animation');
 if (bundle.includes('src:"/assets/')) throw new Error('Root-relative bundle assets remain');
 
 console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');

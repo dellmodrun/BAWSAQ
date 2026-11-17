@@ -17,6 +17,7 @@ fs.cpSync(source, output, { recursive: true });
 
 const textExtensions = new Set(['.html', '.css', '.js', '.json', '.svg']);
 let routerPatched = false;
+let splashPatched = false;
 
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -33,9 +34,21 @@ function walk(directory) {
         .replaceAll("'/fonts/", `'${base}/fonts/`)
         .replaceAll('`/fonts/', `\`${base}/fonts/`);
 
-      if (entry.name === 'index-Y7lMokl3.js' && contents.includes('YO=Fk(P_);')) {
-        contents = contents.replace('YO=Fk(P_);', `YO=Fk(P_,{basename:"${base}"});`);
+      const browserRouter = 'R.jsx(gA,{children:R.jsx(QO,{})})';
+      if (entry.name === 'index-Y7lMokl3.js' && contents.includes(browserRouter)) {
+        contents = contents.replace(
+          browserRouter,
+          `R.jsx(gA,{basename:"${base}",children:R.jsx(QO,{})})`
+        );
         routerPatched = true;
+      }
+      const splashWait = 'const c=()=>{r.remove(),document.getElementById("root")?.removeAttribute("inert")},f=r.getAnimations?.()[0];f?f.finished.then(c,c):c()';
+      if (entry.name === 'index-Y7lMokl3.js' && contents.includes(splashWait)) {
+        contents = contents.replace(
+          splashWait,
+          'const c=()=>{r.remove(),document.getElementById("root")?.removeAttribute("inert")};window.setTimeout(c,550)'
+        );
+        splashPatched = true;
       }
       if (contents !== before) fs.writeFileSync(target, contents);
     }
@@ -44,6 +57,7 @@ function walk(directory) {
 
 walk(output);
 if (!routerPatched) throw new Error('Unable to configure the BAWSAQ router basename');
+if (!splashPatched) throw new Error('Unable to configure the BAWSAQ splash cleanup');
 
 fs.copyFileSync(path.join(output, 'index.html'), path.join(output, '404.html'));
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
