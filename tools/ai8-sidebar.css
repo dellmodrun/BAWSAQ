@@ -2,6 +2,7 @@
 .exchange-hero .exchange-hero-stage{grid-template-columns:minmax(0,1fr);grid-template-areas:"poster" "contract";row-gap:18px}
 .exchange-hero .exchange-hero-action,.exchange-hero .exchange-hero-routes{display:none}
 .exchange-hero .hero-contract{justify-self:start;padding-inline-start:var(--poster-mat);text-align:left}
+.exchange-hero .hero-contract-label::before{display:none}
 .lse-menu-brand-name{display:inline-flex;align-items:center;gap:8px}
 .lse-menu-brand-name::before{content:"";display:block;width:23px;height:23px;background:url('/BAWSAQ/assets/platform/bawsaq-logo-transparent-clean.png') center/contain no-repeat}
 @media(max-width:767px){
