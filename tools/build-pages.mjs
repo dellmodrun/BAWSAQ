@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applyAi8Copy } from './ai8-copy.mjs';
 import { applySixMarketPreview } from './six-market-preview.mjs';
+import { replaceLegacyArt } from './replace-legacy-art.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const source = path.join(root, 'mirror');
@@ -48,6 +49,7 @@ function walk(directory) {
 
       if (path.extname(entry.name).toLowerCase() === '.html') {
         contents = contents
+          .replaceAll('type="image/svg+xml" href="'+base+'/assets/platform/bawsaq-logo-transparent-clean.png"','type="image/png" href="'+base+'/assets/platform/bawsaq-logo-transparent-clean.png"')
           .replaceAll('https://bawsaq.fund/assets/leonida/exchange-share.jpg', 'https://dellmodrun.github.io/BAWSAQ/assets/platform/bawsaq-brand-art.png')
           .replace(
             /<svg viewBox="0 0 64 64" width="96" height="96" focusable="false">[\s\S]*?<\/svg>/,
@@ -91,6 +93,7 @@ function walk(directory) {
 walk(output);
 applyAi8Copy(output);
 applySixMarketPreview(output, base);
+replaceLegacyArt(output);
 fs.copyFileSync(path.join(root, 'tools', 'ai8-detail.js'), path.join(output, 'assets', 'CommodityDetail-B_zrO4xK.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.js'), path.join(output, 'assets', 'ai8-sidebar.js'));
 fs.copyFileSync(path.join(root, 'tools', 'ai8-sidebar.css'), path.join(output, 'assets', 'ai8-sidebar.css'));

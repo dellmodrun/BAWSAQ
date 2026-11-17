@@ -18,6 +18,7 @@ export function applyAi8Copy(site) {
   const assets=path.join(site,'assets');
   const base=`/${process.env.GITHUB_REPOSITORY?.split('/').at(-1)||'BAWSAQ'}`;
   rewrite(path.join(assets,main),s=>{
+    s=replaceExact(s,`R.jsx("img",{src:"${base}/assets/leonida/exchange-poster-title.svg",alt:Rr,fetchPriority:"high"})`,'R.jsx("span",{className:"ai-city-wordmark",children:"BAWSAQ"})');
     s=replaceExact(s,'https://x.com/bawsaqfund','https://x.com/bawsaqaiindex');
     s=replaceExact(s,'return r.thumbnail&&i.unshift(n+"-96.webp"),{sources:i,original:e}','return{sources:i,original:e}');
     s=replaceExact(s,'R.jsx("strong",{children:A.symbol}),C&&R.jsx("span",{className:"stock-marquee-change"','R.jsx("strong",{children:"$"+A.symbol}),C&&R.jsx("span",{className:"stock-marquee-change"');
@@ -31,6 +32,10 @@ export function applyAi8Copy(site) {
     if(start<0||end<0) throw new Error('AI 8 preset catalog not found');
     const objects=roster.map(([slug,name,symbol,category,description,image],i)=>({slug,name,symbol,category,description,image_source_url:`${base}/assets/stocks/${image}`,sort_order:i+1}));
     s=s.slice(0,start)+preset+JSON.stringify(objects)+s.slice(end);
+    const sceneStart=s.indexOf('const OO='),sceneEnd=s.indexOf('const CO=',sceneStart);
+    if(sceneStart<0||sceneEnd<0)throw new Error('Legacy stock scene map missing');
+    const stockScenes={'maze-bank':'chatgta-scene.webp','fleeca-bank':'clawde-scene.webp','burger-shot':'geminight-scene.webp','cluckin-bell':'grockstar-scene.webp','up-n-atom':'deepstreet-scene.webp',sprunk:'la-llama-scene.webp'};
+    s=s.slice(0,sceneStart)+`const AI_SCENES=${JSON.stringify(stockScenes)};function U_(slug){return"${base}/assets/ai-city/"+(AI_SCENES[slug]??"district.webp")}`+s.slice(sceneEnd);
     s=replaceExact(s,'const T_=[{id:"banking",label:"Banking",count:2},{id:"food",label:"Food",count:4},{id:"drinks",label:"Drinks",count:3},{id:"retail",label:"Retail",count:1},{id:"tech",label:"Tech",count:1},{id:"auto",label:"Auto",count:1}]','const T_=[{id:"banking",label:"Foundation AI",count:2},{id:"food",label:"AI Systems",count:3},{id:"drinks",label:"Open Models",count:1}]');
     s=replaceExact(s,'const CO=["maze-bank","burger-shot","vapid"]','const CO=["maze-bank","burger-shot","sprunk"]');
     s=replaceExact(s,'{to:"/goods",label:"Stocks",scene:"district"}','{to:"/goods",label:"The 6 AI Stocks",scene:"district"}');

@@ -3,12 +3,12 @@ import path from 'node:path';
 import { roster } from './ai8-copy.mjs';
 
 const scenes = {
-  'maze-bank': 'financial-district-800.webp',
-  'fleeca-bank': 'vice-vault-800.webp',
-  'burger-shot': 'ocean-drive-diner-800.webp',
-  'cluckin-bell': 'cluckin-bell-800.webp',
-  'up-n-atom': 'up-n-atom-800.webp',
-  sprunk: 'boardwalk-market-800.webp'
+  'maze-bank': 'chatgta-scene.webp',
+  'fleeca-bank': 'clawde-scene.webp',
+  'burger-shot': 'geminight-scene.webp',
+  'cluckin-bell': 'grockstar-scene.webp',
+  'up-n-atom': 'deepstreet-scene.webp',
+  sprunk: 'la-llama-scene.webp'
 };
 
 function replaceExact(value, from, to) {
@@ -24,7 +24,7 @@ export function applySixMarketPreview(site, base) {
   const stocks = roster.map(([slug, name, symbol, , , image]) => ({
     slug, name, symbol,
     logo: `${base}/assets/stocks/${image}`,
-    scene: `${base}/assets/leonida/${scenes[slug]}`
+    scene: `${base}/assets/ai-city/${scenes[slug]}`
   }));
   const component = `
 function sixPublishedMint(value){return typeof value==="string"&&/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(value)?value:null}
