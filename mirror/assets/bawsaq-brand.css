@@ -195,6 +195,13 @@ body::before {
 .ai8-about h2,.ai8-chart h2{font-size:clamp(36px,4.3vw,62px);line-height:1.04;margin:0;font-weight:900;letter-spacing:-.035em}
 .ai8-about>p:not(.ai8-eyebrow),.ai8-chart-head p:not(.ai8-eyebrow){grid-column:2;color:#e9c7d9;font-size:15px;line-height:1.75;margin:0}
 .ai8-about>a{grid-column:2;color:#ff82bb;font-weight:800;font-size:13px}
+@media(min-width:701px){
+  .ai8-about .ai8-eyebrow{grid-column:1;grid-row:1}
+  .ai8-about h2{grid-column:1;grid-row:2 / 5;align-self:start}
+  .ai8-about>p:nth-of-type(2){grid-column:2;grid-row:2}
+  .ai8-about>p:nth-of-type(3){grid-column:2;grid-row:3}
+  .ai8-about>a{grid-column:2;grid-row:4}
+}
 .ai8-eyebrow{color:#ff78ae!important;font-size:11px!important;letter-spacing:.15em;font-weight:800;margin:0 0 12px!important}
 .ai8-chart{margin-bottom:48px}
 .ai8-chart-head{display:flex;justify-content:space-between;gap:30px;align-items:start;margin-bottom:24px}
