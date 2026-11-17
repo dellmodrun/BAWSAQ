@@ -3,12 +3,12 @@ import path from 'node:path';
 import { roster } from './ai8-copy.mjs';
 
 const scenes = {
-  'maze-bank': 'chatgta-scene.webp',
-  'fleeca-bank': 'clawde-scene.webp',
-  'burger-shot': 'geminight-scene.webp',
-  'cluckin-bell': 'grockstar-scene.webp',
-  'up-n-atom': 'deepstreet-scene.webp',
-  sprunk: 'la-llama-scene.webp'
+  'maze-bank': 'chatgta-studio.webp',
+  'fleeca-bank': 'clawde-research.webp',
+  'burger-shot': 'geminight-media.webp',
+  'cluckin-bell': 'grockstar-news.webp',
+  'up-n-atom': 'deepstreet-lab.webp',
+  sprunk: 'la-llama-garage.webp'
 };
 
 function replaceExact(value, from, to) {

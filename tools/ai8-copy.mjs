@@ -34,7 +34,7 @@ export function applyAi8Copy(site) {
     s=s.slice(0,start)+preset+JSON.stringify(objects)+s.slice(end);
     const sceneStart=s.indexOf('const OO='),sceneEnd=s.indexOf('const CO=',sceneStart);
     if(sceneStart<0||sceneEnd<0)throw new Error('Legacy stock scene map missing');
-    const stockScenes={'maze-bank':'chatgta-scene.webp','fleeca-bank':'clawde-scene.webp','burger-shot':'geminight-scene.webp','cluckin-bell':'grockstar-scene.webp','up-n-atom':'deepstreet-scene.webp',sprunk:'la-llama-scene.webp'};
+    const stockScenes={'maze-bank':'chatgta-studio.webp','fleeca-bank':'clawde-research.webp','burger-shot':'geminight-media.webp','cluckin-bell':'grockstar-news.webp','up-n-atom':'deepstreet-lab.webp',sprunk:'la-llama-garage.webp'};
     s=s.slice(0,sceneStart)+`const AI_SCENES=${JSON.stringify(stockScenes)};function U_(slug){return"${base}/assets/ai-city/"+(AI_SCENES[slug]??"district.webp")}`+s.slice(sceneEnd);
     s=replaceExact(s,'const T_=[{id:"banking",label:"Banking",count:2},{id:"food",label:"Food",count:4},{id:"drinks",label:"Drinks",count:3},{id:"retail",label:"Retail",count:1},{id:"tech",label:"Tech",count:1},{id:"auto",label:"Auto",count:1}]','const T_=[{id:"banking",label:"Foundation AI",count:2},{id:"food",label:"AI Systems",count:3},{id:"drinks",label:"Open Models",count:1}]');
     s=replaceExact(s,'const CO=["maze-bank","burger-shot","vapid"]','const CO=["maze-bank","burger-shot","sprunk"]');

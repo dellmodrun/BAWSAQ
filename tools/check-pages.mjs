@@ -10,9 +10,10 @@ for (const file of [
   'assets/index-Y7lMokl3.js', 'assets/index-BXcgnZ7x.css',
   'assets/bawsaq-brand.css',
   'assets/platform/bawsaq-logo-transparent-clean.png',
-  'assets/ai-city/hero-wide.webp', 'assets/ai-city/hero-mobile.webp',
-  'assets/ai-city/share.jpg',
-  'assets/ai-city/chatgta-scene.webp', 'assets/ai-city/la-llama-scene.webp',
+  'assets/ai-city/hero-wide.webp',
+  'assets/ai-city/hero-nine-wide.webp', 'assets/ai-city/hero-nine-mobile.webp',
+  'assets/ai-city/share-nine.jpg',
+  'assets/ai-city/chatgta-studio.webp', 'assets/ai-city/la-llama-garage.webp',
   'assets/platform/bawsaq-boot-scene.webp',
   'assets/CommodityDetail-B_zrO4xK.js',
   'assets/ai8-sidebar.js', 'assets/ai8-sidebar.css',
@@ -47,6 +48,8 @@ if(fs.existsSync(path.join(site,'assets/leonida'))) throw new Error('Legacy scen
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
 if (!bundle.includes('className:"ai-city-wordmark"')) throw new Error('Homepage project-name wordmark is missing');
+if (!bundle.includes('hero-nine-wide.webp') || !bundle.includes('hero-nine-mobile.webp')) throw new Error('Nine-panel homepage art is missing');
+if (!html.includes('/assets/ai-city/share-nine.jpg')) throw new Error('Nine-panel share preview is missing');
 if (!bundle.includes('Six AI stocks. One Vice City market.')) throw new Error('Project introduction is missing');
 if (!bundle.includes('BAWSAQ live price chart')) throw new Error('Future live chart block is missing');
 if (!html.includes('class="ai8-sidebar"') || !html.includes('/BAWSAQ/assets/ai8-sidebar.css')) throw new Error('Left navigation is missing');
@@ -62,7 +65,8 @@ for (const name of ['Qwence','Misstral']) {
 }
 if (bundle.includes('name:"Maze Bank"') || bundle.includes('name:"Fleeca Bank"')) throw new Error('Old company roster remains');
 if (!bundle.includes('/assets/stocks/gta-six/chatgta.png') || !bundle.includes('/assets/stocks/gta-six/la-llama.png')) throw new Error('New AI stock logo references missing');
-if (!bundle.includes('chatgta-scene.webp') || !bundle.includes('la-llama-scene.webp') || !bundle.includes('/assets/ai-city/')) throw new Error('New AI company scenes are missing');
+if (!bundle.includes('chatgta-studio.webp') || !bundle.includes('la-llama-garage.webp') || !bundle.includes('/assets/ai-city/')) throw new Error('New AI company scenes are missing');
+if (bundle.includes('chatgta-scene.webp') || bundle.includes('la-llama-scene.webp')) throw new Error('Generic AI company scenes remain');
 for(const file of ['assets/index-Y7lMokl3.js','assets/index-BXcgnZ7x.css','assets/Coins-CA1CFPin.js','assets/Commodities-BqprS4wm.js','assets/Activity-DZ9x3HFI.js','assets/Launch-C2Z7OZxC.js']) {
   if(fs.readFileSync(path.join(site,file),'utf8').includes('assets/leonida/')) throw new Error(`Legacy scene reference remains in ${file}`);
 }

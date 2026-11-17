@@ -20,8 +20,8 @@
   .ai8-side-card:hover,.ai8-side-card[aria-current=page]{border-color:#ff86ba;transform:translateX(2px)}.ai8-side-card span,.ai8-side-card b{position:relative;text-shadow:0 1px 8px #000}.ai8-side-card b{font-size:17px}
   .ai8-side-extras{display:grid;gap:2px;padding:11px 4px;border-bottom:1px solid #ff8cc02b}.ai8-side-extras a{font-size:11px;color:#e8bed1;padding:6px 4px}.ai8-side-extras a:hover{color:#fff}
   .ai8-side-bottom{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding-top:14px}.ai8-side-bottom a,.ai8-side-bottom button{border:1px solid #ff83b853;background:#321128;color:#ffdaea;border-radius:4px;padding:11px 8px;font-size:11px;font-weight:800;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px}.ai8-side-bottom .ai8-side-launch{grid-column:1/-1;background:#ff4aa2;border-color:#ff4aa2;color:#220719;font-size:13px}.ai8-side-bottom button:hover,.ai8-side-bottom a:hover{background:#53203e}.ai8-side-bottom .ai8-side-launch:hover{background:#ff80bb}
-  .printer-app .exchange-hero{--poster-width:100%;--poster-ratio:1942 / 809;min-height:0;padding:clamp(22px,3vw,44px) 0 clamp(42px,4vw,58px)}
+  .printer-app .exchange-hero{--poster-width:100%;--poster-ratio:16 / 9;min-height:0;padding:clamp(22px,3vw,44px) 0 clamp(42px,4vw,58px)}
   .exchange-hero .exchange-hero-mark{display:none}
   .exchange-hero .exchange-hero-stage{width:calc(100% - clamp(32px,4vw,72px));max-width:1600px}
-  .exchange-hero .exchange-hero-poster{aspect-ratio:1942 / 809}
+  .exchange-hero .exchange-hero-poster{aspect-ratio:16 / 9}
 }
