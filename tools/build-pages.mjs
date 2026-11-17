@@ -30,9 +30,13 @@ function walk(directory) {
         .replaceAll('"/assets/', `"${base}/assets/`)
         .replaceAll("'/assets/", `'${base}/assets/`)
         .replaceAll('`/assets/', `\`${base}/assets/`)
+        .replaceAll(', /assets/', `, ${base}/assets/`)
+        .replaceAll('url(/assets/', `url(${base}/assets/`)
         .replaceAll('"/fonts/', `"${base}/fonts/`)
         .replaceAll("'/fonts/", `'${base}/fonts/`)
-        .replaceAll('`/fonts/', `\`${base}/fonts/`);
+        .replaceAll('`/fonts/', `\`${base}/fonts/`)
+        .replaceAll(', /fonts/', `, ${base}/fonts/`)
+        .replaceAll('url(/fonts/', `url(${base}/fonts/`);
 
       const browserRouter = 'R.jsx(gA,{children:R.jsx(QO,{})})';
       if (entry.name === 'index-Y7lMokl3.js' && contents.includes(browserRouter)) {

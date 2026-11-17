@@ -26,6 +26,10 @@ if (bundle.includes('YO=Fk(P_,{basename:')) throw new Error('Basename was applie
 if (!bundle.includes('window.setTimeout(c,550)')) throw new Error('Splash cleanup timeout is missing');
 if (bundle.includes('f.finished.then(c,c)')) throw new Error('Splash still waits for an infinite logo animation');
 if (bundle.includes('src:"/assets/')) throw new Error('Root-relative bundle assets remain');
+if (bundle.includes(', /assets/')) throw new Error('Root-relative responsive image candidates remain');
+const css = fs.readFileSync(path.join(site, 'assets/index-BXcgnZ7x.css'), 'utf8');
+if (css.includes('url(/assets/')) throw new Error('Root-relative CSS assets remain');
+if (css.includes('url(/fonts/')) throw new Error('Root-relative CSS fonts remain');
 
 console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
 
