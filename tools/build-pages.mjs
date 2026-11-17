@@ -15,9 +15,7 @@ for (const name of ['bawsaq-logo-transparent-clean.png', 'bawsaq-boot-scene.webp
   fs.copyFileSync(path.join(root, 'mirror', 'assets', 'platform', name), path.join(assetTarget, name));
 }
 const html = fs.readFileSync(path.join(source, 'index.html'), 'utf8').replaceAll('__BASE__', base);
-for (const route of ['', 'goods', 'explore', 'launch', 'ledger', 'earnings', 'docs', 'index-methodology',
-  'goods/chatgta', 'goods/clawde', 'goods/geminight', 'goods/grockstar',
-  'goods/deepstreet', 'goods/qwence', 'goods/la-llama', 'goods/misstral']) {
+for (const route of ['', 'goods', 'explore', 'launch', 'ledger', 'earnings', 'docs', 'index-methodology']) {
   const directory = route ? path.join(output, route) : output;
   fs.mkdirSync(directory, { recursive: true });
   fs.writeFileSync(path.join(directory, 'index.html'), html);

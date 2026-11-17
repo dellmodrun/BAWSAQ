@@ -2,8 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const site = path.join(path.dirname(path.dirname(fileURLToPath(import.meta.url))), '_site');
-for (const file of ['index.html','404.html','assets/ai8.css','assets/ai8.js','assets/bawsaq-logo-transparent-clean.png','assets/bawsaq-boot-scene.webp','goods/index.html','explore/index.html','launch/index.html','ledger/index.html','earnings/index.html','docs/index.html','index-methodology/index.html',
-  ...['chatgta','clawde','geminight','grockstar','deepstreet','qwence','la-llama','misstral'].map(slug=>`goods/${slug}/index.html`)]) {
+for (const file of ['index.html','404.html','assets/ai8.css','assets/ai8.js','assets/bawsaq-logo-transparent-clean.png','assets/bawsaq-boot-scene.webp','goods/index.html','explore/index.html','launch/index.html','ledger/index.html','earnings/index.html','docs/index.html','index-methodology/index.html']) {
   const target = path.join(site, file);
   if (!fs.existsSync(target) || fs.statSync(target).size === 0) throw new Error(`Missing Pages file: ${file}`);
 }
