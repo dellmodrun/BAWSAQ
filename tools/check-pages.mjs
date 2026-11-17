@@ -8,6 +8,9 @@ const site = path.join(root, '_site');
 for (const file of [
   'index.html', '404.html', '.nojekyll',
   'assets/index-Y7lMokl3.js', 'assets/index-BXcgnZ7x.css',
+  'assets/bawsaq-brand.css',
+  'assets/platform/bawsaq-logo-transparent-clean.png',
+  'assets/platform/bawsaq-brand-art.png',
   'explore/index.html', 'goods/index.html', 'launch/index.html',
   'ledger/index.html', 'earnings/index.html', 'docs/index.html'
 ]) {
@@ -32,6 +35,10 @@ if (bundle.includes(', /assets/')) throw new Error('Root-relative responsive ima
 const css = fs.readFileSync(path.join(site, 'assets/index-BXcgnZ7x.css'), 'utf8');
 if (css.includes('url(/assets/')) throw new Error('Root-relative CSS assets remain');
 if (css.includes('url(/fonts/')) throw new Error('Root-relative CSS fonts remain');
+if (!html.includes('/BAWSAQ/assets/bawsaq-brand.css')) throw new Error('BAWSAQ brand stylesheet is missing');
+if (!html.includes('/BAWSAQ/assets/platform/bawsaq-logo-transparent-clean.png')) throw new Error('Transparent BAWSAQ boot logo is missing');
+if (bundle.includes('leonida/exchange-mark.svg') || bundle.includes('leonida/exchange-poster-title.svg')) throw new Error('Legacy BAWSAQ logo references remain');
+if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
 
 console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
 

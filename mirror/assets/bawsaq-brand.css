@@ -1,0 +1,145 @@
+:root {
+  --lse-ink: #140610;
+  --lse-lavender: #ffd9ec;
+  --lse-card: #351126;
+  --lse-paper: #fff7fb;
+  --lse-violet: #ff4f9d;
+  --lse-section-bg: #270b1b;
+  --lse-night: radial-gradient(circle at 78% 8%, #8d1b54 0, #47112f 25%, #24091a 58%, #12040d 100%);
+  --canvas: #12040d;
+  --canvas-2: #190612;
+  --shell: #230a19;
+  --shell-2: #301022;
+  --shell-3: #42132e;
+  --shell-4: #58183b;
+  --bg: var(--canvas);
+  --surface: var(--shell);
+  --surface-2: var(--shell-2);
+  --surface-3: var(--shell-3);
+  --paper: var(--shell);
+  --paper-2: var(--shell-2);
+  --paper-3: var(--shell-3);
+  --cream: var(--shell-2);
+  --text: #fff7fb;
+  --text-secondary: #f0bfd7;
+  --muted: #c895af;
+  --faint: #a96d8d;
+  --quiet: #8c5873;
+  --paper-muted: var(--muted);
+  --paper-ink: var(--text);
+  --border: #5b2141;
+  --border-strong: #87315f;
+  --line: var(--border);
+  --line-soft: #43152f;
+  --steel: #5b2141;
+  --steel-2: #78305a;
+  --frame-edge: #66254a;
+  --frame-ring: #44152f;
+  --frame-bed: #16050f;
+  --header-bg: #140610f2;
+  --nav-bg: #220918fa;
+  --accent: #ff4f9d;
+  --lime: var(--accent);
+  --accent-ink: #ff5ba5;
+  --accent-hover: #ff80b8;
+  --accent-soft: #ff4f9d17;
+  --accent-border: #d83e86;
+  --on-accent: #18050f;
+  --mint: #36d5c4;
+  --positive: var(--mint);
+  --success-soft: #12312f;
+  --red: #ff718d;
+  --danger: var(--red);
+  --danger-soft: #3a1121;
+  --danger-border: #92334e;
+  --amber: #ffc66d;
+  --warning: var(--amber);
+  --warning-soft: #322313;
+  --art: #e7b4cf;
+  --blue: #58d9e8;
+  --blue2: #58d9e8;
+  --shadow-color: #0902078a;
+  --shadow: var(--shadow-color);
+  --overlay: #10020cc7;
+  --scroll-thumb: #8d315f;
+}
+
+html,
+body {
+  background: #12040d;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 0%, #ff3d9220, transparent 34%),
+    radial-gradient(circle at 92% 24%, #45d5dc12, transparent 30%);
+}
+
+#goods-boot {
+  background: radial-gradient(circle at 50% 40%, #5e1840 0, #26091c 42%, #12040d 100%) !important;
+}
+
+.boot-horizon img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 22px #ff4f9d80);
+}
+
+.boot-name {
+  color: #fff7fb !important;
+  letter-spacing: .25em;
+}
+
+.brand-logo,
+.wallet-modal[role="dialog"] .wallet-option-logo img,
+.exchange-hero h1 img {
+  object-fit: contain;
+  background: transparent !important;
+}
+
+.brand-logo {
+  filter: drop-shadow(0 0 12px #ff4f9d52);
+}
+
+.printer-app .exchange-hero h1 {
+  width: min(25%, 260px);
+}
+
+.exchange-hero h1 img {
+  filter: drop-shadow(0 12px 22px #10020cb8) drop-shadow(0 0 20px #ff4f9d55);
+}
+
+.exchange-hero-poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, #8f174927, transparent 42%, #fa3f8a24);
+  mix-blend-mode: screen;
+}
+
+.stock-tape,
+.site-header,
+.mobile-menu,
+.wallet-overlay {
+  border-color: var(--border) !important;
+}
+
+.cm-primary,
+.button.primary,
+.exchange-hero-action,
+.wallet-button {
+  box-shadow: 0 10px 34px #ff4f9d20;
+}
+
+::selection {
+  color: #18050f;
+  background: #ff70ae;
+}
+

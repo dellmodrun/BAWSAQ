@@ -39,6 +39,22 @@ function walk(directory) {
         .replaceAll(', /fonts/', `, ${base}/fonts/`)
         .replaceAll('url(/fonts/', `url(${base}/fonts/`);
 
+      contents = contents
+        .replaceAll('leonida/exchange-mark.svg', 'platform/bawsaq-logo-transparent-clean.png')
+        .replaceAll('leonida/exchange-poster-title.svg', 'platform/bawsaq-logo-transparent-clean.png')
+        .replaceAll('platform/BAWSAQ.png', 'platform/bawsaq-logo-transparent-clean.png')
+        .replaceAll('platform/bawsaq-badge.png', 'platform/bawsaq-logo-transparent-clean.png');
+
+      if (path.extname(entry.name).toLowerCase() === '.html') {
+        contents = contents
+          .replaceAll('https://bawsaq.fund/assets/leonida/exchange-share.jpg', 'https://dellmodrun.github.io/BAWSAQ/assets/platform/bawsaq-brand-art.png')
+          .replace(
+            /<svg viewBox="0 0 64 64" width="96" height="96" focusable="false">[\s\S]*?<\/svg>/,
+            `<img src="${base}/assets/platform/bawsaq-logo-transparent-clean.png" width="96" height="96" alt="">`
+          )
+          .replace('</head>', `  <link rel="stylesheet" href="${base}/assets/bawsaq-brand.css">\n</head>`);
+      }
+
       const browserRouter = 'R.jsx(gA,{children:R.jsx(QO,{})})';
       if (entry.name === 'index-Y7lMokl3.js' && contents.includes(browserRouter)) {
         contents = contents.replace(
