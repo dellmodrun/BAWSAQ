@@ -135,6 +135,11 @@ if (!dynamicPreloadPatched) throw new Error('Unable to configure the BAWSAQ dyna
 fs.copyFileSync(path.join(output, 'index.html'), path.join(output, '404.html'));
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
 applyCustomDomain(output, process.env.BAWSAQ_DOMAIN);
+const entryBundlePath = path.join(output, 'assets', 'index-Y7lMokl3.js');
+const entryBundle = fs.readFileSync(entryBundlePath, 'utf8');
+const cssPreloadCheck = 'const b=g.endsWith(".css")';
+if (!entryBundle.includes(cssPreloadCheck)) throw new Error('CSS preload detection anchor is missing');
+fs.writeFileSync(entryBundlePath, entryBundle.replace(cssPreloadCheck, 'const b=g.split("?")[0].endsWith(".css")'));
 const assetRevision = versionAssets(output);
 console.log(`GitHub Pages bundle created at ${output} with base ${base}/ and asset revision ${assetRevision}`);
 
