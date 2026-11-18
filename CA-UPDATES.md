@@ -1,6 +1,6 @@
-# BAIWSAQ CA updates
+# BAWSAQ CA updates
 
-The official $BAIWSAQ token and six AI stocks have separate rows in the
+The official $BAWSAQ token and six AI stocks have separate rows in the
 `bawsaq_ca` table. They are read from Supabase, independently of GitHub Pages.
 The visible market page polls the public CA views once per second while open.
 
@@ -23,4 +23,4 @@ Vault; only the public read key is included in the frontend.
 
 The database schema is in `supabase/migrations/20261118120000_bawsaq_live_ca.sql`.
 The production project is `snwthyespgghvvlktyyu` (shared infrastructure with
-other sites, but BAIWSAQ has its own table and views).
+other sites, but BAWSAQ has its own table and views).

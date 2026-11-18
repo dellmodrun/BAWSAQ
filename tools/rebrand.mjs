@@ -14,13 +14,12 @@ export function applyRebrand(site, domain) {
       let next = (domain ? source : source.replaceAll('/BAWSAQ', '/__site_repo_path__'))
         .replaceAll('bawsaq-logo-transparent-clean.png', 'baiwsaq-logo-transparent.png')
         .replaceAll('https://bawsaqai.fund', origin)
-        .replaceAll('https://bawsaq.fund', origin)
-        .replaceAll('BAWSAQ', 'BAIWSAQ');
+        .replaceAll('https://bawsaq.fund', origin);
       if (entry.name.endsWith('.html')) {
         next = next
           .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/assets/platform/baiwsaq-logo.png$2`)
           .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/assets/platform/baiwsaq-logo.png$2`)
-          .replace(/(<meta property="og:image:alt" content=")[^"]*(")/, '$1BAIWSAQ logo$2');
+          .replace(/(<meta property="og:image:alt" content=")[^"]*(")/, '$1BAWSAQ logo$2');
       }
       if (!domain) next = next.replaceAll('/__site_repo_path__', '/BAWSAQ');
       if (next !== source) fs.writeFileSync(target, next);

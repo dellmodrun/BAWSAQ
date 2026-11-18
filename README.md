@@ -1,6 +1,6 @@
-﻿# BAIWSAQ
+﻿# BAWSAQ
 
-BAIWSAQ is a fictional Vice City inspired market for six AI model themed stocks. The public site is deployed to `https://baiwsaqindex.fun/` from this repository's `main` branch through GitHub Pages.
+BAWSAQ is a fictional Vice City inspired market for six AI model themed stocks. The public site is deployed to `https://baiwsaqindex.fun/` from this repository's `main` branch through GitHub Pages.
 
 ## Build and verify
 
@@ -20,3 +20,4 @@ The official token and six stock addresses are separate public records in Supaba
 ## Current availability
 
 Wallet connection is available. Coin creation, payouts, and buybacks remain a prelaunch preview until their production services are available. See `SITE-STATUS.md` for details.
+

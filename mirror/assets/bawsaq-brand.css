@@ -270,8 +270,7 @@ body:has(.coin-register) .mint-strip-wrap{display:none}
 .printer-app .exchange-hero h1{width:min(72%,780px)}
 .printer-app .exchange-hero h1{top:59%}
 .exchange-hero h1 .ai-city-wordmark{display:inline-block;padding:.02em .08em .12em;color:#fff8ec;font:900 clamp(48px,7.5vw,118px)/.9 var(--lse-display);letter-spacing:-.025em;text-align:center;white-space:nowrap;-webkit-text-stroke:clamp(2px,.36vw,5px) #170814;paint-order:stroke fill;text-shadow:0 .045em 0 #ff81ae,.045em .085em 0 #4a1937,.075em .115em 0 #170814,0 .19em .28em #100516dd;transform:skew(-3deg) rotate(-1deg)}
-.exchange-hero h1 .ai-city-wordmark-ai{display:inline-block;margin-inline:.035em;color:#ffd5e7;font-style:normal;letter-spacing:.015em}
-@media(max-width:767px){.printer-app .exchange-hero h1{top:53%}.exchange-hero h1 .ai-city-wordmark{font-size:clamp(36px,10vw,60px);letter-spacing:-.025em;-webkit-text-stroke:2px #170814}}
+@media(max-width:767px){.printer-app .exchange-hero h1{top:43%}.exchange-hero h1 .ai-city-wordmark{font-size:clamp(36px,10vw,60px);letter-spacing:-.025em;-webkit-text-stroke:2px #170814}}
 .exchange-hero{--poster-ratio:16 / 9}
 @media(max-width:767px){.exchange-hero{--poster-ratio:2 / 3}}
 

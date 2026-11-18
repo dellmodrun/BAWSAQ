@@ -1,4 +1,4 @@
-name: Deploy BAIWSAQ to GitHub Pages
+name: Deploy BAWSAQ to GitHub Pages
 
 on:
   push:
