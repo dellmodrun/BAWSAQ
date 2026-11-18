@@ -11,7 +11,7 @@ for (const file of [
   'index.html', '404.html', '.nojekyll',
   'assets/index-Y7lMokl3.js', 'assets/index-BXcgnZ7x.css',
   'assets/bawsaq-brand.css',
-  'assets/platform/bawsaq-logo-transparent-clean.png',
+  'assets/platform/baiwsaq-logo.png',
   'assets/ai-city/hero-wide.webp',
   'assets/ai-city/hero-lucia-jason-wide.webp', 'assets/ai-city/hero-lucia-jason-mobile.webp',
   'assets/ai-city/share-lucia-jason.jpg',
@@ -54,17 +54,17 @@ if (base && css.includes('url(/assets/')) throw new Error('Root-relative CSS ass
 if (base && css.includes('url(/fonts/')) throw new Error('Root-relative CSS fonts remain');
 if (!html.includes(`${base}/assets/bawsaq-brand.css`)) throw new Error('BAWSAQ brand stylesheet is missing');
 if (!fs.readFileSync(path.join(site,'assets/bawsaq-brand.css'),'utf8').includes('.cm-art .cm-art-source{background:transparent}')) throw new Error('Stock logos still have a solid backing');
-if (!html.includes(`${base}/assets/platform/bawsaq-logo-transparent-clean.png`)) throw new Error('Transparent BAWSAQ boot logo is missing');
+if (!html.includes(`${base}/assets/platform/baiwsaq-logo.png`)) throw new Error('BAIWSAQ boot logo is missing');
 if (!html.includes(`${base}/assets/platform/bawsaq-boot-scene.webp`)) throw new Error('BAWSAQ boot scene preload is missing');
 if(fs.existsSync(path.join(site,'assets/leonida'))) throw new Error('Legacy scene assets are still being published');
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
-if (!bundle.includes('platform/bawsaq-logo-transparent-clean.png')) throw new Error('New transparent BAWSAQ logo is not used by the app');
+if (!bundle.includes('platform/baiwsaq-logo.png')) throw new Error('New BAIWSAQ logo is not used by the app');
 if (!bundle.includes('className:"ai-city-wordmark"')) throw new Error('Homepage project-name wordmark is missing');
 if (!bundle.includes('hero-lucia-jason-wide.webp') || !bundle.includes('hero-lucia-jason-mobile.webp')) throw new Error('Lucia and Jason AI poster is missing');
 if (bundle.includes('hero-nine-wide.webp') || bundle.includes('hero-nine-mobile.webp')) throw new Error('Regular grid poster remains');
-if (!html.includes('/assets/ai-city/share-lucia-jason.jpg')) throw new Error('AI poster share preview is missing');
+if (!html.includes('/assets/platform/baiwsaq-logo.png')) throw new Error('BAIWSAQ share preview is missing');
 if (!bundle.includes('Six AI stocks. One Vice City market.')) throw new Error('Project introduction is missing');
-if (!bundle.includes('BAWSAQ live price chart')) throw new Error('Future live chart block is missing');
+if (!bundle.includes('BAIWSAQ live price chart')) throw new Error('Future live chart block is missing');
 if (!html.includes('class="ai8-sidebar"') || !html.includes(`${base}/assets/ai8-sidebar.css`)) throw new Error('Left navigation is missing');
 if (!html.includes('6 AI STOCKS')) throw new Error('BAWSAQ 6 AI STOCKS branding is missing');
 for (const slug of ['chatgta','clawde','geminight','grockstar','deepstreet','la-llama']) {
@@ -73,6 +73,7 @@ for (const slug of ['chatgta','clawde','geminight','grockstar','deepstreet','la-
 if (bundle.includes('maze-bank') || bundle.includes('fleeca-bank') || bundle.includes('burger-shot') || bundle.includes('cluckin-bell') || bundle.includes('up-n-atom') || bundle.includes('sprunk')) throw new Error('Old company slugs remain in the public bundle');
 if (bundle.includes('https://bawsaq.fund') || html.includes('https://bawsaq.fund')) throw new Error('Old domain remains in the public site');
 if (process.env.BAWSAQ_DOMAIN) {
+  if (fs.readFileSync(path.join(site, 'CNAME'), 'utf8').trim() !== process.env.BAWSAQ_DOMAIN) throw new Error('Custom-domain CNAME is missing');
   if (!html.includes(`href="https://${process.env.BAWSAQ_DOMAIN}/"`)) throw new Error('Custom domain canonical URL is missing');
   if (html.includes('/BAWSAQ/') || bundle.includes('/BAWSAQ/')) throw new Error('Repository path remains in custom-domain bundle');
 }
@@ -95,6 +96,7 @@ for(const file of ['assets/index-Y7lMokl3.js','assets/index-BXcgnZ7x.css','asset
   if(fs.readFileSync(path.join(site,file),'utf8').includes('assets/leonida/')) throw new Error(`Legacy scene reference remains in ${file}`);
 }
 if (!bundle.includes('https://x.com/bawsaqaiindex') || bundle.includes('https://x.com/bawsaqfund')) throw new Error('BAWSAQ X account is outdated');
+if (html.replaceAll('/BAWSAQ', '').includes('BAWSAQ') || bundle.replaceAll('/BAWSAQ', '').includes('BAWSAQ') || html.includes('bawsaqai.fund') || bundle.includes('bawsaqai.fund')) throw new Error('Old public brand or domain remains');
 if (!bundle.includes('children:"$"+A.symbol')) throw new Error('Stock ticker prefix is missing');
 const market=fs.readFileSync(path.join(site,'assets/Coins-CA1CFPin.js'),'utf8');
 if (!market.includes('OFFICIAL / PINNED') || !market.includes('Six AI stocks. One city.')) throw new Error('Market preview is missing');
@@ -103,5 +105,5 @@ if (directory.includes('M2 21h20 M4 18h16') || !directory.includes('M7 7h10v10H7
 const admin=fs.readFileSync(path.join(site,'adminPanel/index.html'),'utf8');
 if (!admin.includes('NOT CONFIGURED ON GITHUB PAGES')) throw new Error('Admin status page is missing');
 
-console.log('PASS: BAWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
+console.log('PASS: BAIWSAQ Pages bundle, assets, router base, fallback and seven subpages verified.');
 

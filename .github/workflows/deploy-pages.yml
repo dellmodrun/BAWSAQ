@@ -1,4 +1,4 @@
-name: Deploy BAWSAQ to GitHub Pages
+name: Deploy BAIWSAQ to GitHub Pages
 
 on:
   push:
@@ -17,7 +17,7 @@ concurrency:
 jobs:
   deploy:
     env:
-      BAWSAQ_DOMAIN: bawsaqai.fund
+      BAWSAQ_DOMAIN: baiwsaqindex.fun
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

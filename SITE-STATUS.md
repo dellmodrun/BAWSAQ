@@ -1,6 +1,6 @@
-# BAWSAQ public site status
+# BAIWSAQ public site status
 
-- The official $BAWSAQ CA and six AI-stock CAs are independent database records.
+- The official $BAIWSAQ CA and six AI-stock CAs are independent database records.
   An open market or detail page polls them each second. Publishing an address
   does not rebuild GitHub Pages.
 - The home `02 / PLATFORM MARKET` panel switches from TBA to the published CA,

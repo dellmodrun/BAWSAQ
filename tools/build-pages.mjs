@@ -10,6 +10,7 @@ import { applyPublicSlugs, slugPairs } from './public-slugs.mjs';
 import { applySitePolish } from './site-polish.mjs';
 import { versionAssets } from './version-assets.mjs';
 import { applyCustomDomain } from './custom-domain.mjs';
+import { applyRebrand } from './rebrand.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const source = path.join(root, 'mirror');
@@ -135,6 +136,7 @@ if (!dynamicPreloadPatched) throw new Error('Unable to configure the BAWSAQ dyna
 fs.copyFileSync(path.join(output, 'index.html'), path.join(output, '404.html'));
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
 applyCustomDomain(output, process.env.BAWSAQ_DOMAIN);
+applyRebrand(output, process.env.BAWSAQ_DOMAIN);
 const entryBundlePath = path.join(output, 'assets', 'index-Y7lMokl3.js');
 const entryBundle = fs.readFileSync(entryBundlePath, 'utf8');
 const cssPreloadCheck = 'const b=g.endsWith(".css")';
