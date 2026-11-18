@@ -12,6 +12,7 @@ for (const file of [
   'assets/index-Y7lMokl3.js', 'assets/index-BXcgnZ7x.css',
   'assets/bawsaq-brand.css',
   'assets/platform/baiwsaq-logo.png',
+  'assets/platform/baiwsaq-logo-transparent.png',
   'assets/ai-city/hero-wide.webp',
   'assets/ai-city/hero-lucia-jason-wide.webp', 'assets/ai-city/hero-lucia-jason-mobile.webp',
   'assets/ai-city/share-lucia-jason.jpg',
@@ -54,11 +55,11 @@ if (base && css.includes('url(/assets/')) throw new Error('Root-relative CSS ass
 if (base && css.includes('url(/fonts/')) throw new Error('Root-relative CSS fonts remain');
 if (!html.includes(`${base}/assets/bawsaq-brand.css`)) throw new Error('BAWSAQ brand stylesheet is missing');
 if (!fs.readFileSync(path.join(site,'assets/bawsaq-brand.css'),'utf8').includes('.cm-art .cm-art-source{background:transparent}')) throw new Error('Stock logos still have a solid backing');
-if (!html.includes(`${base}/assets/platform/baiwsaq-logo.png`)) throw new Error('BAIWSAQ boot logo is missing');
+if (!html.includes(`${base}/assets/platform/baiwsaq-logo-transparent.png`)) throw new Error('Transparent BAIWSAQ boot logo is missing');
 if (!html.includes(`${base}/assets/platform/bawsaq-boot-scene.webp`)) throw new Error('BAWSAQ boot scene preload is missing');
 if(fs.existsSync(path.join(site,'assets/leonida'))) throw new Error('Legacy scene assets are still being published');
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
-if (!bundle.includes('platform/baiwsaq-logo.png')) throw new Error('New BAIWSAQ logo is not used by the app');
+if (!bundle.includes('platform/baiwsaq-logo-transparent.png')) throw new Error('Transparent BAIWSAQ logo is not used by the app');
 if (!bundle.includes('className:"ai-city-wordmark"')) throw new Error('Homepage project-name wordmark is missing');
 if (!bundle.includes('hero-lucia-jason-wide.webp') || !bundle.includes('hero-lucia-jason-mobile.webp')) throw new Error('Lucia and Jason AI poster is missing');
 if (bundle.includes('hero-nine-wide.webp') || bundle.includes('hero-nine-mobile.webp')) throw new Error('Regular grid poster remains');

@@ -12,7 +12,7 @@ export function applyRebrand(site, domain) {
       if (!textExtensions.has(path.extname(entry.name).toLowerCase())) continue;
       const source = fs.readFileSync(target, 'utf8');
       let next = (domain ? source : source.replaceAll('/BAWSAQ', '/__site_repo_path__'))
-        .replaceAll('bawsaq-logo-transparent-clean.png', 'baiwsaq-logo.png')
+        .replaceAll('bawsaq-logo-transparent-clean.png', 'baiwsaq-logo-transparent.png')
         .replaceAll('https://bawsaqai.fund', origin)
         .replaceAll('https://bawsaq.fund', origin)
         .replaceAll('BAWSAQ', 'BAIWSAQ');
