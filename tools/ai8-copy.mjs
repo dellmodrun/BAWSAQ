@@ -18,7 +18,7 @@ export function applyAi8Copy(site) {
   const assets=path.join(site,'assets');
   const base=`/${process.env.GITHUB_REPOSITORY?.split('/').at(-1)||'BAWSAQ'}`;
   rewrite(path.join(assets,main),s=>{
-    s=replaceExact(s,`R.jsx("img",{src:"${base}/assets/leonida/exchange-poster-title.svg",alt:Rr,fetchPriority:"high"})`,'R.jsx("span",{className:"ai-city-wordmark",children:"BAWSAQ"})');
+    s=replaceExact(s,`R.jsx("img",{src:"${base}/assets/leonida/exchange-poster-title.svg",alt:Rr,fetchPriority:"high"})`,'R.jsxs("span",{className:"ai-city-wordmark",children:["B",R.jsx("em",{className:"ai-city-wordmark-ai",children:"AI"}),"WSAQ"]})');
     s=replaceExact(s,'https://x.com/bawsaqfund','https://x.com/bawsaqaiindex');
     s=replaceExact(s,'return r.thumbnail&&i.unshift(n+"-96.webp"),{sources:i,original:e}','return{sources:i,original:e}');
     s=replaceExact(s,'R.jsx("strong",{children:A.symbol}),C&&R.jsx("span",{className:"stock-marquee-change"','R.jsx("strong",{children:"$"+A.symbol}),C&&R.jsx("span",{className:"stock-marquee-change"');
