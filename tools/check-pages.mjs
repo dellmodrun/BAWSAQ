@@ -100,7 +100,7 @@ if (bundle.includes('chatgta-scene.webp') || bundle.includes('la-llama-scene.web
 for(const file of ['assets/index-Y7lMokl3.js','assets/index-BXcgnZ7x.css','assets/Coins-CA1CFPin.js','assets/Commodities-BqprS4wm.js','assets/Activity-DZ9x3HFI.js','assets/Launch-C2Z7OZxC.js']) {
   if(fs.readFileSync(path.join(site,file),'utf8').includes('assets/leonida/')) throw new Error(`Legacy scene reference remains in ${file}`);
 }
-if (!bundle.includes('https://x.com/bawsaqaiindex') || bundle.includes('https://x.com/bawsaqfund')) throw new Error('BAWSAQ X account is outdated');
+if (!bundle.includes('https://x.com/bawsaq6stonk') || bundle.includes('https://x.com/bawsaqfund') || bundle.includes('https://x.com/bawsaqaiindex')) throw new Error('BAWSAQ X account is outdated');
 if (html.includes('BAIWSAQ') || bundle.includes('BAIWSAQ') || html.includes('bawsaqai.fund') || bundle.includes('bawsaqai.fund')) throw new Error('Wrong public brand or old domain remains');
 if (!bundle.includes('children:"$"+A.symbol')) throw new Error('Stock ticker prefix is missing');
 const market=fs.readFileSync(path.join(site,'assets/Coins-CA1CFPin.js'),'utf8');
