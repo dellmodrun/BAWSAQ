@@ -12,18 +12,18 @@ export function applyRebrand(site, domain) {
       if (!textExtensions.has(path.extname(entry.name).toLowerCase())) continue;
       const source = fs.readFileSync(target, 'utf8');
       let next = (domain ? source : source.replaceAll('/BAWSAQ', '/__site_repo_path__'))
-        .replaceAll('bawsaq-logo-transparent-clean.png', 'bawsaq-vice-palm-mark.png')
-        .replaceAll('baiwsaq-logo-transparent.png', 'bawsaq-vice-palm-mark.png')
-        .replaceAll('baiwsaq-logo.png', 'bawsaq-vice-palm-scene.png')
-        .replaceAll('bawsaq-market-mark.png', 'bawsaq-vice-palm-mark.png')
-        .replaceAll('bawsaq-market-share.png', 'bawsaq-vice-palm-scene.png')
-        .replaceAll('type="image/svg+xml" href="'+(domain ? '' : '/BAWSAQ')+'/assets/platform/bawsaq-vice-palm-mark.png"', 'type="image/png" href="'+(domain ? '' : '/BAWSAQ')+'/assets/platform/bawsaq-vice-palm-mark.png"')
+        .replaceAll('bawsaq-logo-transparent-clean.png', 'bawsaq-sunset-mark.png')
+        .replaceAll('baiwsaq-logo-transparent.png', 'bawsaq-sunset-mark.png')
+        .replaceAll('baiwsaq-logo.png', 'bawsaq-sunset-scene.jpg')
+        .replaceAll('bawsaq-market-mark.png', 'bawsaq-sunset-mark.png')
+        .replaceAll('bawsaq-market-share.png', 'bawsaq-sunset-scene.jpg')
+        .replaceAll('type="image/svg+xml" href="'+(domain ? '' : '/BAWSAQ')+'/assets/platform/bawsaq-sunset-mark.png"', 'type="image/png" href="'+(domain ? '' : '/BAWSAQ')+'/assets/platform/bawsaq-sunset-mark.png"')
         .replaceAll('https://bawsaqai.fund', origin)
         .replaceAll('https://bawsaq.fund', origin);
       if (entry.name.endsWith('.html')) {
         next = next
-          .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/assets/platform/bawsaq-vice-palm-scene.png$2`)
-          .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/assets/platform/bawsaq-vice-palm-scene.png$2`)
+          .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/assets/platform/bawsaq-sunset-scene.jpg$2`)
+          .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/assets/platform/bawsaq-sunset-scene.jpg$2`)
           .replace(/(<meta property="og:image:alt" content=")[^"]*(")/, '$1BAWSAQ logo$2');
       }
       if (!domain) next = next.replaceAll('/__site_repo_path__', '/BAWSAQ');
@@ -38,5 +38,6 @@ export function applyRebrand(site, domain) {
   for (const old of ['bawsaq-vice-circuit-mark.png','bawsaq-vice-circuit-scene.png']) fs.rmSync(path.join(site, 'assets', 'platform', old), { force: true });
   for (const old of ['bawsaq-artdeco-b-mark.png','bawsaq-artdeco-b-scene.png']) fs.rmSync(path.join(site, 'assets', 'platform', old), { force: true });
   for (const old of ['bawsaq-vice-tech-mark.png','bawsaq-vice-tech-scene.png']) fs.rmSync(path.join(site, 'assets', 'platform', old), { force: true });
+  for (const old of ['bawsaq-vice-palm-mark.png','bawsaq-vice-palm-scene.png']) fs.rmSync(path.join(site, 'assets', 'platform', old), { force: true });
   if (domain) fs.writeFileSync(path.join(site, 'CNAME'), `${domain}\n`);
 }
