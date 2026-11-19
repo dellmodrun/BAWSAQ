@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="BAWSAQ six stock market mark">
+  <g fill="none" stroke-linejoin="round">
+    <path d="M44 163V87l84-47 84 47v76l-84 49z" stroke="#FFF0D9" stroke-width="12"/>
+    <path d="M65 155h126" stroke="#FFF0D9" stroke-width="8"/>
+    <path d="M73 177h110" stroke="#FFF0D9" stroke-width="8"/>
+    <path d="M84 155V114h16v41M106 155V93h16v62M128 155v-34h16v34M150 155V83h16v72M172 155v-49h16v49" stroke="#FF3DA8" stroke-width="8"/>
+    <path d="M62 155v-26h16v26" stroke="#EFB957" stroke-width="8"/>
+    <path d="M84 114h16M106 93h16M128 121h16M150 83h16M172 106h16M62 129h16" stroke="#FFF0D9" stroke-width="5"/>
+    <path d="M104 177l24-20 24 20-24 20z" fill="#FFF0D9" stroke="#FFF0D9" stroke-width="2"/>
+    <path d="M120 177h16M128 169v16" stroke="#B51663" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -12,13 +12,16 @@ export function applyRebrand(site, domain) {
       if (!textExtensions.has(path.extname(entry.name).toLowerCase())) continue;
       const source = fs.readFileSync(target, 'utf8');
       let next = (domain ? source : source.replaceAll('/BAWSAQ', '/__site_repo_path__'))
-        .replaceAll('bawsaq-logo-transparent-clean.png', 'baiwsaq-logo-transparent.png')
+        .replaceAll('bawsaq-logo-transparent-clean.png', 'bawsaq-market-mark.png')
+        .replaceAll('baiwsaq-logo-transparent.png', 'bawsaq-market-mark.png')
+        .replaceAll('baiwsaq-logo.png', 'bawsaq-market-share.png')
+        .replaceAll('type="image/svg+xml" href="'+(domain ? '' : '/BAWSAQ')+'/assets/platform/bawsaq-market-mark.png"', 'type="image/png" href="'+(domain ? '' : '/BAWSAQ')+'/assets/platform/bawsaq-market-mark.png"')
         .replaceAll('https://bawsaqai.fund', origin)
         .replaceAll('https://bawsaq.fund', origin);
       if (entry.name.endsWith('.html')) {
         next = next
-          .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/assets/platform/baiwsaq-logo.png$2`)
-          .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/assets/platform/baiwsaq-logo.png$2`)
+          .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${origin}/assets/platform/bawsaq-market-share.png$2`)
+          .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${origin}/assets/platform/bawsaq-market-share.png$2`)
           .replace(/(<meta property="og:image:alt" content=")[^"]*(")/, '$1BAWSAQ logo$2');
       }
       if (!domain) next = next.replaceAll('/__site_repo_path__', '/BAWSAQ');
@@ -27,5 +30,7 @@ export function applyRebrand(site, domain) {
   }
   visit(site);
   fs.rmSync(path.join(site, 'assets', 'platform', 'bawsaq-logo-transparent-clean.png'), { force: true });
+  fs.rmSync(path.join(site, 'assets', 'platform', 'baiwsaq-logo-transparent.png'), { force: true });
+  fs.rmSync(path.join(site, 'assets', 'platform', 'baiwsaq-logo.png'), { force: true });
   if (domain) fs.writeFileSync(path.join(site, 'CNAME'), `${domain}\n`);
 }
