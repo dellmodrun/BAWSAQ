@@ -2,12 +2,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const replacements = new Map([
-  ['exchange-poster-portrait-640.webp','hero-ai-mainframe-mobile.webp'],
-  ['exchange-poster-portrait.webp','hero-ai-mainframe-mobile.webp'],
-  ['exchange-poster-wide-960.webp','hero-ai-mainframe-wide.webp'],
-  ['exchange-poster-wide.webp','hero-ai-mainframe-wide.webp'],
-  ['exchange-poster-960.webp','hero-ai-mainframe-wide.webp'],
-  ['exchange-poster.webp','hero-ai-mainframe-wide.webp'],
+  ['exchange-poster-portrait-640.webp','hero-ai-operators-mobile.webp'],
+  ['exchange-poster-portrait.webp','hero-ai-operators-mobile.webp'],
+  ['exchange-poster-wide-960.webp','hero-ai-operators-wide.webp'],
+  ['exchange-poster-wide.webp','hero-ai-operators-wide.webp'],
+  ['exchange-poster-960.webp','hero-ai-operators-wide.webp'],
+  ['exchange-poster.webp','hero-ai-operators-wide.webp'],
   ['exchange-sunset-800.webp','hero-wide.webp'],
   ['exchange-sunset.webp','hero-wide.webp'],
   ['financial-district-800.webp','district.webp'],

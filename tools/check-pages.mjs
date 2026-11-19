@@ -14,7 +14,7 @@ for (const file of [
   'assets/platform/baiwsaq-logo.png',
   'assets/platform/baiwsaq-logo-transparent.png',
   'assets/ai-city/hero-wide.webp',
-  'assets/ai-city/hero-ai-mainframe-wide.webp', 'assets/ai-city/hero-ai-mainframe-mobile.webp',
+  'assets/ai-city/hero-ai-operators-wide.webp', 'assets/ai-city/hero-ai-operators-mobile.webp',
   'assets/ai-city/chatgta-studio.webp', 'assets/ai-city/la-llama-garage.webp',
   'assets/platform/bawsaq-boot-scene.webp',
   'assets/CommodityDetail-B_zrO4xK.js',
@@ -60,7 +60,8 @@ if(fs.existsSync(path.join(site,'assets/leonida'))) throw new Error('Legacy scen
 if (bundle.includes('leonida/exchange-mark.svg')) throw new Error('Legacy BAWSAQ icon references remain');
 if (!bundle.includes('platform/baiwsaq-logo-transparent.png')) throw new Error('Transparent BAWSAQ logo is not used by the app');
 if (!bundle.includes('className:"ai-city-wordmark"')) throw new Error('Homepage project-name wordmark is missing');
-if (!bundle.includes('hero-ai-mainframe-wide.webp') || !bundle.includes('hero-ai-mainframe-mobile.webp')) throw new Error('AI mainframe hero artwork is missing');
+if (!bundle.includes('hero-ai-operators-wide.webp') || !bundle.includes('hero-ai-operators-mobile.webp')) throw new Error('AI operators hero artwork is missing');
+if (bundle.includes('hero-ai-mainframe-wide.webp') || bundle.includes('hero-ai-mainframe-mobile.webp')) throw new Error('Previous hero artwork remains');
 if (bundle.includes('hero-lucia-jason-wide.webp') || bundle.includes('hero-lucia-jason-mobile.webp')) throw new Error('Old protagonist hero artwork remains');
 for (const oldImage of ['hero-lucia-jason-wide.webp', 'hero-lucia-jason-mobile.webp', 'share-lucia-jason.jpg']) {
   if (fs.existsSync(path.join(site, 'assets', 'ai-city', oldImage))) throw new Error(`Old protagonist artwork is still published: ${oldImage}`);
